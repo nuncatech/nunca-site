@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Paleta de Cores */
+  --cor-fundo: #fbf6f3;
+  --cor-texto-principal: #5c5f30;
+  --cor-texto-secundario: #333333;
+  --cor-destaque-primario: #ce8f8f;
+  --cor-destaque-secundario: #fad02c;
+  
+  /* Tipografia */
+  --fonte-titulo: 'Lora', serif;
+  --fonte-corpo: 'Montserrat', sans-serif;
+  
+  /* Espaçamentos */
+  --espacamento-xs: 0.5rem;
+  --espacamento-sm: 1rem;
+  --espacamento-md: 1.5rem;
+  --espacamento-lg: 2rem;
+  --espacamento-xl: 3rem;
+  --espacamento-xxl: 4rem;
+  
+  /* Bordas */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Sombras */
+  --sombra-suave: 0 2px 8px rgba(92, 95, 48, 0.1);
+  --sombra-media: 0 4px 16px rgba(92, 95, 48, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-principal);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Tipografia */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-texto-principal);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--espacamento-sm);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+p {
+  margin-bottom: var(--espacamento-sm);
+  color: var(--cor-texto-principal);
+}
+
+/* Links */
+a {
+  color: var(--cor-destaque-primario);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--cor-texto-principal);
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  padding: var(--espacamento-xs) var(--espacamento-md);
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--fonte-corpo);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--cor-destaque-primario);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--cor-texto-principal);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--cor-texto-principal);
+  border: 2px solid var(--cor-texto-principal);
+}
+
+.btn-secondary:hover {
+  background-color: var(--cor-texto-principal);
+  color: var(--cor-fundo);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--espacamento-md);
+}
+
+.container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--espacamento-md);
+}
+
+/* Seções */
+.section {
+  padding: var(--espacamento-xxl) 0;
+}
+
+.section-sm {
+  padding: var(--espacamento-xl) 0;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--espacamento-lg);
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-media);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: var(--espacamento-lg);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Flexbox utilities */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Text utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--cor-destaque-primario);
+}
+
+.text-secondary {
+  color: var(--cor-texto-secundario);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  .container {
+    padding: 0 var(--espacamento-sm);
+  }
+  
+  .section {
+    padding: var(--espacamento-xl) 0;
+  }
+  
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .card {
+    padding: var(--espacamento-md);
+  }
+}
