@@ -29,6 +29,17 @@
   --sombra-media: 0 4px 16px rgba(92, 95, 48, 0.15);
 }
 
+/* Tema escuro */
+[data-theme="dark"] {
+  --cor-fundo: #0e0f0a;
+  --cor-texto-principal: #e8e8e0;
+  --cor-texto-secundario: #c9c9be;
+  --cor-destaque-primario: #cbbf8f;
+  --cor-destaque-secundario: #9aa26b;
+  --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --sombra-media: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -152,6 +163,10 @@ a:hover {
   padding: var(--espacamento-lg);
   box-shadow: var(--sombra-suave);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .card {
+  background: #181a12;
 }
 
 .card:hover {

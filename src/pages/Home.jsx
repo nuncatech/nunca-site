@@ -1,7 +1,10 @@
 import Card from '../components/Card';
 import './Home.css';
+import { useTheme } from '../components/ThemeContext.jsx';
 
 const Home = () => {
+  const { theme } = useTheme();
+
   return (
     <div className="home">
       {/* Seção Hero */}
@@ -27,7 +30,7 @@ const Home = () => {
               </div>
             </div>
             <div className="hero-image">
-              <img src="/logo-nunca.svg" alt="NUNCA - Núcleo de Nutrição" />
+              <img src={theme === 'dark' ? '/logo-nunca-dark.png' : '/logo-nunca.svg'} alt="NUNCA - Núcleo de Nutrição" />
             </div>
           </div>
         </div>

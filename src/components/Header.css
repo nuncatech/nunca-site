@@ -86,7 +86,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: white;
+  background-color: var(--cor-fundo);
   border-radius: var(--border-radius);
   box-shadow: var(--sombra-media);
   list-style: none;
@@ -219,4 +219,28 @@
   .nav-open ~ .menu-toggle span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
   }
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(92, 95, 48, 0.2);
+  background: transparent;
+  color: var(--cor-texto-principal);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(206, 143, 143, 0.08);
+  border-color: rgba(92, 95, 48, 0.35);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
 }
