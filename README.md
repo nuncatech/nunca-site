@@ -1,167 +1,209 @@
-# NUNCA - Núcleo de Nutrição, Clínica e Atualização
+# NUNCA - Educação Profissional em Nutrição
 
-Site institucional do NUNCA, um núcleo dedicado à formação, pesquisa e prática em nutrição.
+> Transformando barreiras em pontes
+
+Site institucional do NUNCA (Núcleo de Nutrição, Clínica e Atualização), um projeto de integração entre estudantes e profissionais da área da saúde focado em educação profissional e formação continuada.
 
 ## 🌟 Sobre o Projeto
 
-O NUNCA é um projeto inovador que integra quatro frentes formativas:
+O NUNCA é uma plataforma educacional B2B que oferece:
 
-- **LAB**: Laboratório de Pesquisa e Inovação em Nutrição
-- **Raiz**: Formação Básica e Fundamental em Nutrição  
-- **Aurora**: Especialização e Aperfeiçoamento Profissional
-- **Núcleo**: Atendimento Clínico e Consultoria Especializada
+- **LAB**: Laboratório de ideias mensal (online e presencial)
+- **Colmeia**: Mentorias modulares personalizadas
+- **Favos**: Mini cursos focados em temas específicos
+- **Cápsulas**: Comunidades temáticas de aprendizado
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias
 
-- **React 19** - Biblioteca para interfaces de usuário
-- **Vite** - Build tool e dev server
+- **Vite 7.1.4** - Build tool ultra-rápido
+- **React 19** - Biblioteca UI
 - **React Router DOM** - Roteamento SPA
-- **CSS3** - Estilização com variáveis CSS e grid/flexbox
-- **Google Fonts** - Tipografia (Lora e Montserrat)
+- **Tailwind CSS 3** - Framework CSS utility-first
+- **Framer Motion** - Animações declarativas
+- **shadcn/ui** - Componentes UI reutilizáveis
 
 ## 🎨 Design System
 
-### Paleta de Cores
-- **Fundo**: `#fbf6f3` (Branco off-white)
-- **Texto Principal**: `#5c5f30` (Verde)
-- **Texto Secundário**: `#333333` (Cinza escuro)
-- **Destaque Primário**: `#ce8f8f` (Rosa)
-- **Destaque Secundário**: `#fad02c` (Amarelo)
+### Cores
+
+**Light Mode:**
+- Background: `#fbf6f3`
+- Primary: `#5c5f30` (Verde oliva)
+- Accent: `#ce8f8f` (Rosa seco)
+- CTA: `#f4a259` (Laranja educacional)
+
+**Dark Mode:**
+- Background: `#1a1a1a`
+- Primary: `#a4a77d`
+- Accent: `#d4a5a5`
+- CTA: `#f4a259`
 
 ### Tipografia
 - **Títulos**: Lora (serif)
-- **Corpo do texto**: Montserrat (sans-serif)
+- **Corpo**: Montserrat (sans-serif)
 
 ## 📁 Estrutura do Projeto
 
 ```
 src/
-├── components/          # Componentes reutilizáveis
-│   ├── Header.jsx      # Navegação principal
-│   ├── Footer.jsx      # Rodapé com links
-│   └── Card.jsx        # Componente de card
-├── pages/              # Páginas da aplicação
-│   ├── Home.jsx        # Página inicial
-│   ├── Lab.jsx         # Frente LAB
-│   ├── Raiz.jsx        # Frente Raiz
-│   ├── Aurora.jsx      # Frente Aurora
-│   ├── Nucleo.jsx      # Frente Núcleo
-│   ├── Sobre.jsx       # Sobre nós
-│   └── Contato.jsx     # Contato
-└── assets/             # Recursos estáticos
+├── components/
+│   ├── common/           # Componentes reutilizáveis
+│   │   ├── Layout.jsx    # Section, Container, SectionHeader
+│   │   └── UIComponents.jsx  # FeatureItem, HighlightBox, MetricCard
+│   ├── ui/               # Componentes shadcn/ui
+│   │   ├── button.jsx
+│   │   └── card.jsx
+│   ├── ThemeContext.jsx  # Context para dark mode
+│   ├── ThemeToggle.jsx   # Toggle dark/light
+│   ├── Header.jsx
+│   └── Footer.jsx
+├── lib/
+│   ├── animations.js     # Variantes Framer Motion
+│   ├── constants.js      # Constantes do site
+│   └── utils.js          # Funções utilitárias
+├── pages/
+│   ├── Home.jsx          # Página inicial
+│   ├── Lab.jsx           # LAB
+│   ├── Colmeia.jsx       # Mentorias
+│   ├── Favos.jsx         # Cursos
+│   ├── Capsulas.jsx      # Comunidades
+│   ├── Sobre.jsx         # Sobre o NUNCA
+│   └── Contato.jsx       # Contato
+├── App.jsx
+├── main.jsx
+└── index.css
 ```
 
-## 🛠️ Como Executar
+## 🛠️ Desenvolvimento
 
 ### Pré-requisitos
-- Node.js (versão 18 ou superior)
+- Node.js 18+
 - npm ou yarn
 
 ### Instalação
 
-1. Clone o repositório:
 ```bash
+# Clonar repositório
 git clone <url-do-repositorio>
 cd nunca-site
-```
 
-2. Instale as dependências:
-```bash
+# Instalar dependências
 npm install
-# ou
-yarn install
-```
 
-3. Execute em modo de desenvolvimento:
-```bash
+# Rodar em desenvolvimento
 npm run dev
-# ou
-yarn dev
 ```
 
-4. Acesse no navegador:
-```
-http://localhost:5173
-```
+Acesse: http://localhost:5173
 
 ### Build para Produção
 
 ```bash
 npm run build
-# ou
-yarn build
+npm run preview
 ```
 
-### Preview da Build
+## 🐳 Docker
 
 ```bash
-npm run preview
-# ou
-yarn preview
+# Desenvolvimento com hot reload
+docker-compose up
+
+# Parar containers
+docker-compose down
 ```
 
-## 📱 Responsividade
+Acesse: http://localhost:3000
 
-O site foi desenvolvido com design responsivo, funcionando perfeitamente em:
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
+## 🌐 Deploy
 
-## ♿ Acessibilidade
+O site está configurado para deploy automático no Vercel:
+- ✅ Deploy automático a cada push na `main`
+- ✅ Preview deploys para Pull Requests
+- ✅ Domínio customizado: www.gruponunca.com.br
+- ✅ SSL automático
 
-- Navegação por teclado
-- Contraste adequado de cores
-- Textos alternativos em imagens
-- Estrutura semântica HTML5
-- Focus visible para elementos interativos
+Ver [deploy-guide.md](./.gemini/antigravity/brain/.../deploy-guide.md) para instruções detalhadas.
 
-## 🔧 Personalização
+## 📚 Bibliotecas Principais
 
-### Adicionando Novos Componentes
+| Biblioteca | Versão | Propósito |
+|------------|--------|-----------|
+| react | ^19.0.0 | UI Framework |
+| vite | ^7.1.4 | Build Tool |
+| tailwindcss | ^3.4.17 | Styling |
+| framer-motion | ^11.16.0 | Animações |
+| react-router-dom | ^7.1.3 | Roteamento |
+| clsx | ^2.1.1 | Class names |
+| tailwind-merge | ^2.5.5 | Merge Tailwind classes |
 
-1. Crie o arquivo em `src/components/`
-2. Implemente o componente seguindo o padrão:
-```jsx
-import './ComponentName.css';
+## ✨ Features
 
-const ComponentName = ({ prop1, prop2 }) => {
-  return (
-    <div className="component-name">
-      {/* Conteúdo */}
-    </div>
-  );
-};
+- ✅ Dark mode com persistência
+- ✅ Animações suaves (Framer Motion)
+- ✅ Design responsivo (mobile-first)
+- ✅ SEO otimizado
+- ✅ Acessibilidade (ARIA labels)
+- ✅ Performance otimizada
+- ✅ Componentes reutilizáveis
+- ✅ TypeScript-ready (PropTypes)
 
-export default ComponentName;
-```
+## 🎯 Posicionamento
 
-### Adicionando Novas Páginas
+O NUNCA é focado exclusivamente em **educação profissional B2B**:
 
-1. Crie o arquivo em `src/pages/`
-2. Adicione a rota em `src/App.jsx`
-3. Atualize a navegação em `src/components/Header.jsx`
+- ✅ Formação de estudantes de nutrição
+- ✅ Desenvolvimento profissional contínuo
+- ✅ Comunidades de aprendizado
+- ✅ Integração educacional
 
-### Modificando Cores
-
-Edite as variáveis CSS em `src/index.css`:
-```css
-:root {
-  --cor-fundo: #fbf6f3;
-  --cor-texto-principal: #5c5f30;
-  /* ... outras variáveis */
-}
-```
+**Não oferecemos:**
+- ❌ Atendimento clínico
+- ❌ Consultas nutricionais
+- ❌ Serviços B2C
 
 ## 📞 Contato
 
-- **E-mail**: nuncanutricao@gmail.com
-- **Instagram**: [@nunca.nutricao](https://www.instagram.com/nunca.nutricao/)
-- **Notion**: [nuncanutri.notion.site](https://nuncanutri.notion.site/)
+- **E-mail**: contato@gruponunca.com.br
+- **Instagram**: [@nunca.nutri](https://www.instagram.com/nunca.nutri/)
+- **Comunidade**: [NÚCLEO](https://nucleo.gruponunca.com.br)
+
+## 🔧 Scripts Disponíveis
+
+```bash
+# Desenvolvimento
+npm run dev
+
+# Build
+npm run build
+
+# Preview do build
+npm run preview
+
+# Lint
+npm run lint
+```
+
+## 📈 Performance
+
+**Build Stats (Produção):**
+- HTML: 2.07 kB (gzip: 0.78 kB)
+- CSS: 23.10 kB (gzip: 4.52 kB)
+- JS: 424.40 kB (gzip: 125.26 kB)
+
+## 🤝 Contribuindo
+
+Este é um projeto privado do NUNCA. Para contribuições internas:
+
+1. Crie uma branch: `git checkout -b feature/nova-feature`
+2. Commit suas mudanças: `git commit -m 'feat: adicionar nova feature'`
+3. Push: `git push origin feature/nova-feature`
+4. Abra um Pull Request
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido para o NUNCA - Núcleo de Nutrição, Clínica e Atualização.
+© 2026 NUNCA - Núcleo de Nutrição, Clínica e Atualização. Todos os direitos reservados.
 
 ---
 
-*"Nunca paramos de nutrir o que importa."*
+*"A gente cuida do que te sustenta por dentro."*
