@@ -1,246 +1,302 @@
-import './Contato.css';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 const Contato = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
   return (
-    <div className="contato-page">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="contato-hero">
-        <div className="container">
-          <div className="contato-hero-content">
-            <h1>Contato</h1>
-            <p className="contato-subtitle">
-              Vamos abrir mais portas juntos? Entre em contato conosco
-            </p>
-          </div>
+      <motion.section
+        initial="initial"
+        animate="animate"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-cta/20 to-background"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h1
+            variants={fadeInUp}
+            className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-primary mb-6"
+          >
+            Contato
+          </motion.h1>
+          <motion.p
+            variants={fadeInUp}
+            className="text-xl text-primary/80"
+          >
+            Vamos abrir mais portas juntos? Entre em contato conosco
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Informações de Contato */}
-      <section className="section contato-info">
-        <div className="container">
-          <div className="contato-content">
-            <div className="contato-principal">
-              <h2>Fale Conosco</h2>
-              <p>
-                Estamos sempre prontos para conversar sobre nutrição, educação 
-                e oportunidades de colaboração. Entre em contato através dos 
-                nossos canais oficiais.
-              </p>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary mb-4">
+              Fale Conosco
+            </h2>
+            <p className="text-lg text-primary/80 max-w-2xl mx-auto">
+              Estamos sempre prontos para conversar sobre nutrição, educação e oportunidades de colaboração.
+            </p>
+          </motion.div>
 
-              <div className="contato-cards">
-                <div className="contato-card">
-                  <div className="contato-icon">📧</div>
-                  <h3>E-mail</h3>
-                  <p>Para dúvidas, informações e parcerias</p>
-                  <a href="mailto:nuncanutricao@gmail.com" className="contato-link">
-                    nuncanutricao@gmail.com
-                  </a>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-background p-8 rounded-lg text-center hover:shadow-lg transition-shadow"
+            >
+              <div className="text-5xl mb-4">📧</div>
+              <h3 className="text-xl font-serif font-bold text-primary mb-2">E-mail</h3>
+              <p className="text-sm text-primary/70 mb-4">Para dúvidas e informações</p>
+              <a
+                href="mailto:contato@gruponunca.com.br"
+                className="text-accent hover:text-accent/80 font-medium transition-colors break-all"
+              >
+                contato@gruponunca.com.br
+              </a>
+            </motion.div>
 
-                <div className="contato-card">
-                  <div className="contato-icon">📱</div>
-                  <h3>Telefone</h3>
-                  <p>Atendimento telefônico personalizado</p>
-                  <a href="tel:+5511999999999" className="contato-link">
-                    (11) 99999-9999
-                  </a>
-                </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-background p-8 rounded-lg text-center hover:shadow-lg transition-shadow"
+            >
+              <div className="text-5xl mb-4">📷</div>
+              <h3 className="text-xl font-serif font-bold text-primary mb-2">Instagram</h3>
+              <p className="text-sm text-primary/70 mb-4">Acompanhe nosso dia a dia</p>
+              <a
+                href="https://www.instagram.com/nunca.nutri/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:text-accent/80 font-medium transition-colors"
+              >
+                @nunca.nutri
+              </a>
+            </motion.div>
 
-                <div className="contato-card">
-                  <div className="contato-icon">📷</div>
-                  <h3>Instagram</h3>
-                  <p>Acompanhe nosso dia a dia e novidades</p>
-                  <a 
-                    href="https://www.instagram.com/nunca.nutricao/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="contato-link"
-                  >
-                    @nunca.nutricao
-                  </a>
-                </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-background p-8 rounded-lg text-center hover:shadow-lg transition-shadow"
+            >
+              <div className="text-5xl mb-4">📝</div>
+              <h3 className="text-xl font-serif font-bold text-primary mb-2">Notion</h3>
+              <p className="text-sm text-primary/70 mb-4">Acesse nossos materiais</p>
+              <a
+                href="https://nuncanutri.notion.site/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:text-accent/80 font-medium transition-colors"
+              >
+                nuncanutri.notion.site
+              </a>
+            </motion.div>
 
-                <div className="contato-card">
-                  <div className="contato-icon">📝</div>
-                  <h3>Notion</h3>
-                  <p>Acesse nosso conteúdo e materiais</p>
-                  <a 
-                    href="https://nuncanutri.notion.site/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="contato-link"
-                  >
-                    nuncanutri.notion.site
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="contato-formulario">
-              <div className="formulario-card">
-                <h3>Envie sua Mensagem</h3>
-                <p>
-                  Preencha o formulário abaixo e entraremos em contato em breve.
-                </p>
-
-                <form className="contato-form">
-                  <div className="form-group">
-                    <label htmlFor="nome">Nome Completo</label>
-                    <input 
-                      type="text" 
-                      id="nome" 
-                      name="nome" 
-                      required 
-                      placeholder="Seu nome completo"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="email">E-mail</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      name="email" 
-                      required 
-                      placeholder="seu.email@exemplo.com"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="telefone">Telefone (opcional)</label>
-                    <input 
-                      type="tel" 
-                      id="telefone" 
-                      name="telefone" 
-                      placeholder="(11) 99999-9999"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="assunto">Assunto</label>
-                    <select id="assunto" name="assunto" required>
-                      <option value="">Selecione um assunto</option>
-                      <option value="informacoes-cursos">Informações sobre Cursos</option>
-                      <option value="consulta-clinica">Consulta Clínica</option>
-                      <option value="parcerias">Parcerias e Colaborações</option>
-                      <option value="pesquisa">Pesquisa e LAB</option>
-                      <option value="consultoria">Consultoria</option>
-                      <option value="outros">Outros</option>
-                    </select>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="mensagem">Mensagem</label>
-                    <textarea 
-                      id="mensagem" 
-                      name="mensagem" 
-                      rows="5" 
-                      required 
-                      placeholder="Conte-nos como podemos ajudá-lo..."
-                    ></textarea>
-                  </div>
-
-                  <button type="submit" className="btn btn-primary">
-                    Enviar Mensagem
-                  </button>
-                </form>
-              </div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-background p-8 rounded-lg text-center hover:shadow-lg transition-shadow"
+            >
+              <div className="text-5xl mb-4">🌐</div>
+              <h3 className="text-xl font-serif font-bold text-primary mb-2">Comunidade</h3>
+              <p className="text-sm text-primary/70 mb-4">Faça parte do NUCLEO</p>
+              <a
+                href="https://nucleo.gruponunca.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:text-accent/80 font-medium transition-colors break-words"
+              >
+                nucleo.gruponunca.com.br
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Seção de Oportunidades */}
-      <section className="section oportunidades">
-        <div className="container">
-          <div className="oportunidades-content">
-            <h2 className="text-center">Oportunidades de Colaboração</h2>
-            <p className="text-center section-subtitle">
+      {/* Oportunidades */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary mb-4">
+              Oportunidades de Colaboração
+            </h2>
+            <p className="text-lg text-primary/80">
               Descubra as diferentes formas de fazer parte do NUNCA
             </p>
+          </motion.div>
 
-            <div className="grid grid-2 oportunidades-grid">
-              <div className="oportunidade-card">
-                <h3>Para Estudantes</h3>
-                <ul>
-                  <li>Programas de formação Raiz</li>
-                  <li>Estágios supervisionados no Núcleo</li>
-                  <li>Participação em projetos de pesquisa</li>
-                  <li>Mentoria profissional</li>
-                </ul>
-                <a href="mailto:nuncanutricao@gmail.com?subject=Oportunidades para Estudantes" 
-                   className="btn btn-secondary">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-sm"
+            >
+              <h3 className="text-2xl font-serif font-bold text-primary mb-4">Para Estudantes</h3>
+              <ul className="space-y-3 mb-6 text-primary/80">
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Programas de formação e cursos
+                </li>
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Mentorias profissionais
+                </li>
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Participação em projetos de pesquisa
+                </li>
+              </ul>
+              <Button variant="outline" asChild className="w-full">
+                <a href="mailto:contato@gruponunca.com.br?subject=Oportunidades para Estudantes">
                   Saiba mais
                 </a>
-              </div>
+              </Button>
+            </motion.div>
 
-              <div className="oportunidade-card">
-                <h3>Para Profissionais</h3>
-                <ul>
-                  <li>Cursos de especialização Aurora</li>
-                  <li>Colaboração em pesquisas</li>
-                  <li>Supervisão clínica</li>
-                  <li>Networking profissional</li>
-                </ul>
-                <a href="mailto:nuncanutricao@gmail.com?subject=Oportunidades para Profissionais" 
-                   className="btn btn-secondary">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-sm"
+            >
+              <h3 className="text-2xl font-serif font-bold text-primary mb-4">Para Profissionais</h3>
+              <ul className="space-y-3 mb-6 text-primary/80">
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Cursos de especialização
+                </li>
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Colaboração em pesquisas
+                </li>
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Networking profissional
+                </li>
+              </ul>
+              <Button variant="outline" asChild className="w-full">
+                <a href="mailto:contato@gruponunca.com.br?subject=Oportunidades para Profissionais">
                   Saiba mais
                 </a>
-              </div>
+              </Button>
+            </motion.div>
 
-              <div className="oportunidade-card">
-                <h3>Para Instituições</h3>
-                <ul>
-                  <li>Parcerias educacionais</li>
-                  <li>Projetos de pesquisa colaborativa</li>
-                  <li>Consultoria especializada</li>
-                  <li>Desenvolvimento de protocolos</li>
-                </ul>
-                <a href="mailto:nuncanutricao@gmail.com?subject=Parcerias Institucionais" 
-                   className="btn btn-secondary">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-sm"
+            >
+              <h3 className="text-2xl font-serif font-bold text-primary mb-4">Para Instituições</h3>
+              <ul className="space-y-3 mb-6 text-primary/80">
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Parcerias educacionais
+                </li>
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Projetos colaborativos
+                </li>
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Consultoria especializada
+                </li>
+              </ul>
+              <Button variant="outline" asChild className="w-full">
+                <a href="mailto:contato@gruponunca.com.br?subject=Parcerias Institucionais">
                   Saiba mais
                 </a>
-              </div>
+              </Button>
+            </motion.div>
 
-              <div className="oportunidade-card">
-                <h3>Para Pacientes</h3>
-                <ul>
-                  <li>Consultas nutricionais individualizadas</li>
-                  <li>Acompanhamento continuado</li>
-                  <li>Abordagem humanizada</li>
-                  <li>Cuidado baseado em evidências</li>
-                </ul>
-                <a href="mailto:nuncanutricao@gmail.com?subject=Agendamento de Consulta" 
-                   className="btn btn-secondary">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-lg shadow-sm"
+            >
+              <h3 className="text-2xl font-serif font-bold text-primary mb-4">Para Pacientes</h3>
+              <ul className="space-y-3 mb-6 text-primary/80">
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Consultas nutricionais
+                </li>
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Acompanhamento continuado
+                </li>
+                <li className="flex items-start">
+                  <span className="text-accent mr-2">•</span>
+                  Abordagem humanizada
+                </li>
+              </ul>
+              <Button variant="outline" asChild className="w-full">
+                <a href="mailto:contato@gruponunca.com.br?subject=Agendamento de Consulta">
                   Agendar consulta
                 </a>
-              </div>
-            </div>
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Final */}
-      <section className="section cta-contato">
-        <div className="container">
-          <div className="cta-content text-center">
-            <h2>Vamos abrir mais portas juntos?</h2>
-            <p>
-              Seja qual for sua necessidade ou interesse, estamos aqui para 
-              construir pontes e nutrir conexões significativas.
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary mb-6">
+              Vamos abrir mais portas juntos?
+            </h2>
+            <p className="text-lg text-primary/80 mb-8">
+              Seja qual for sua necessidade ou interesse, estamos aqui para construir pontes
+              e nutrir conexões significativas.
             </p>
-            <div className="cta-buttons">
-              <a href="mailto:nuncanutricao@gmail.com" className="btn btn-primary">
-                Enviar e-mail
-              </a>
-              <a href="https://www.instagram.com/nunca.nutricao/" 
-                 target="_blank" 
-                 rel="noopener noreferrer" 
-                 className="btn btn-secondary">
-                Seguir no Instagram
-              </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="cta" size="lg" asChild>
+                <a href="mailto:contato@gruponunca.com.br">Enviar e-mail</a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a
+                  href="https://www.instagram.com/nunca.nutri/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Seguir no Instagram
+                </a>
+              </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

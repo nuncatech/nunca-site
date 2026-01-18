@@ -3,25 +3,24 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Lab from './pages/Lab';
-import Raiz from './pages/Raiz';
-import Aurora from './pages/Aurora';
-import Nucleo from './pages/Nucleo';
+import Mentorias from './pages/Mentorias';
+import Cursos from './pages/Cursos';
+import Capsulas from './pages/Capsulas';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
-import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="main-content">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/lab" element={<Lab />} />
-            <Route path="/raiz" element={<Raiz />} />
-            <Route path="/aurora" element={<Aurora />} />
-            <Route path="/nucleo" element={<Nucleo />} />
+            <Route path="/mentorias" element={<Mentorias />} />
+            <Route path="/cursos" element={<Cursos />} />
+            <Route path="/capsulas" element={<Capsulas />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/contato" element={<Contato />} />
           </Routes>

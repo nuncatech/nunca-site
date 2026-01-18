@@ -1,139 +1,70 @@
-import './FrenteFormativa.css';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 const Lab = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
   return (
-    <div className="frente-page">
-      {/* Hero Section */}
-      <section className="frente-hero lab-hero">
-        <div className="container">
-          <div className="frente-hero-content">
-            <h1>LAB</h1>
-            <p className="frente-subtitle">
-              Laboratório de Pesquisa e Inovação em Nutrição
-            </p>
-            <p className="frente-description">
-              Espaço dedicado ao desenvolvimento de pesquisas científicas e projetos 
-              inovadores na área da nutrição, conectando teoria e prática através 
-              de metodologias científicas rigorosas.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen pt-20">
+      <motion.section
+        initial="initial"
+        animate="animate"
+        className="py-20 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-4xl mx-auto">
+          <motion.h1
+            variants={fadeInUp}
+            className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-primary mb-8"
+          >
+            Lab
+          </motion.h1>
 
-      {/* Conteúdo Principal */}
-      <section className="section">
-        <div className="container">
-          <div className="frente-content">
-            <div className="content-section">
-              <h2>O que é o LAB?</h2>
-              <p>
-                O LAB é nosso laboratório de pesquisa e inovação, onde desenvolvemos 
-                estudos científicos aplicados à nutrição clínica e coletiva. Nossa 
-                abordagem combina rigor metodológico com aplicação prática, gerando 
-                conhecimento que pode ser diretamente aplicado no atendimento e na 
-                formação profissional.
-              </p>
-              <p>
-                Trabalhamos com diferentes linhas de pesquisa, desde estudos 
-                observacionais até ensaios clínicos, sempre com foco na geração 
-                de evidências que possam contribuir para a melhoria da prática 
-                nutricional.
-              </p>
-            </div>
-
-            <div className="content-section">
-              <h2>Como funciona?</h2>
-              <div className="grid grid-2">
-                <div className="feature-card">
-                  <h3>Projetos de Pesquisa</h3>
-                  <p>
-                    Desenvolvimento de estudos originais em nutrição, com metodologia 
-                    científica rigorosa e aplicação prática dos resultados.
-                  </p>
-                </div>
-                <div className="feature-card">
-                  <h3>Parcerias Acadêmicas</h3>
-                  <p>
-                    Colaboração com universidades e institutos de pesquisa para 
-                    ampliar o alcance e a qualidade dos estudos desenvolvidos.
-                  </p>
-                </div>
-                <div className="feature-card">
-                  <h3>Publicações Científicas</h3>
-                  <p>
-                    Disseminação dos resultados através de artigos científicos, 
-                    congressos e eventos da área.
-                  </p>
-                </div>
-                <div className="feature-card">
-                  <h3>Aplicação Prática</h3>
-                  <p>
-                    Tradução dos achados científicos em protocolos e diretrizes 
-                    práticas para profissionais da área.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="content-section">
-              <h2>Para quem se destina?</h2>
-              <div className="target-audience">
-                <div className="audience-card">
-                  <h3>Pesquisadores</h3>
-                  <p>
-                    Profissionais interessados em desenvolver pesquisas na área 
-                    da nutrição, desde iniciantes até pesquisadores experientes.
-                  </p>
-                </div>
-                <div className="audience-card">
-                  <h3>Estudantes de Pós-graduação</h3>
-                  <p>
-                    Mestrandos e doutorandos que buscam orientação e colaboração 
-                    em seus projetos de pesquisa.
-                  </p>
-                </div>
-                <div className="audience-card">
-                  <h3>Profissionais da Prática</h3>
-                  <p>
-                    Nutricionistas e outros profissionais que desejam integrar 
-                    evidências científicas em sua prática clínica.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="content-section">
-              <h2>Áreas de Pesquisa</h2>
-              <ul className="research-areas">
-                <li>Nutrição Clínica e Terapia Nutricional</li>
-                <li>Comportamento Alimentar e Psicologia da Nutrição</li>
-                <li>Nutrição Materno-Infantil</li>
-                <li>Nutrição e Envelhecimento</li>
-                <li>Nutrição Esportiva e Performance</li>
-                <li>Segurança Alimentar e Nutricional</li>
-                <li>Tecnologia de Alimentos e Inovação</li>
-                <li>Epidemiologia Nutricional</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section cta-section">
-        <div className="container">
-          <div className="cta-content text-center">
-            <h2>Interessado em participar do LAB?</h2>
+          <motion.div variants={fadeInUp} className="space-y-6 text-lg text-primary/80 leading-relaxed">
             <p>
-              Faça parte da nossa comunidade de pesquisadores e contribua para 
-              o avanço da ciência da nutrição.
+              O Lab do NUNCA é nosso laboratório de pesquisa e inovação, um espaço dedicado ao
+              desenvolvimento de projetos que buscam transformar a prática da nutrição.
             </p>
-            <a href="/contato" className="btn btn-primary">
-              Entre em contato
-            </a>
-          </div>
+
+            <p>
+              Aqui, incentivamos a curiosidade, o questionamento e a busca por novas formas de
+              pensar e fazer nutrição. Acreditamos que a inovação nasce da intersecção entre
+              conhecimento técnico, criatividade e compromisso social.
+            </p>
+
+            <div className="bg-accent/10 border-l-4 border-accent p-6 my-8">
+              <p className="text-xl font-semibold text-primary">
+                Pesquisa, inovação e compromisso com a transformação.
+              </p>
+            </div>
+
+            <p>
+              No Lab, desenvolvemos projetos que vão além do convencional, sempre com o objetivo
+              de criar soluções que façam diferença na vida real das pessoas e na prática dos
+              profissionais de nutrição.
+            </p>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="mt-12">
+            <Button
+              asChild
+              variant="cta"
+              size="lg"
+            >
+              <a
+                href="https://nucleo.gruponunca.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Conheça Nossos Projetos →
+              </a>
+            </Button>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
