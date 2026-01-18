@@ -303,7 +303,7 @@ const Home = () => {
                   <svg className="w-6 h-6 text-cta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Orientações sobre como entrar em cada espaço do NÚCLEO</span>
+                  <span>Orientações sobre como entrar em cada espaço do NUCLEO</span>
                 </li>
               </ul>
             </motion.div>

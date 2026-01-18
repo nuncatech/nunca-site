@@ -23,7 +23,7 @@ avisos e novidades sobre tudo o que acontece no NUNCA;
 convites para aulas, encontros, eventos...
 conteúdos pontuais que ajudam a pensar prática, carreira, estudos e cuidado;
 espaços de conversa guiada (quando abrirmos tópicos específicos);
-orientações sobre como entrar em cada espacinho novo do NÚCLEO, se (e quando) for o momento.
+orientações sobre como entrar em cada espacinho novo do NUCLEO, se (e quando) for o momento.
 
 
 🖤 Último combinado

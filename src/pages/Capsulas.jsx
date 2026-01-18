@@ -197,7 +197,7 @@ const Capsulas = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Conhecer as Cápsulas no NÚCLEO →
+                                Conhecer as Cápsulas no NUCLEO →
                             </a>
                         </Button>
                     </motion.div>

@@ -236,7 +236,7 @@ const Sobre = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Entrar no NÚCLEO →
+                Entrar no NUCLEO →
               </a>
             </Button>
           </motion.div>

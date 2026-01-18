@@ -4,7 +4,7 @@ O que são os FAVOS do NUNCA?
 Like A Boss Ship GIF
 
 
-Os Favos são os mini cursos do NÚCLEO do NUNCA.
+Os Favos são os mini cursos do NUCLEO do NUNCA.
 
 Eles são formações focadas, pensadas para aprofundar um tema específico, desenvolver uma habilidade concreta ou organizar um recorte importante de um assunto sem precisar entrar em um percurso longo.
 
@@ -37,7 +37,7 @@ O importante é: você entra, aprofunda, integra e sai com algo organizado.
 
 
 
-Os Favos dentro do NÚCLEO
+Os Favos dentro do NUCLEO
 Os Favos funcionam de forma independente, como mini cursos avulsos
 
 Eles conversam com o ecossistema, mas não dependem dele.

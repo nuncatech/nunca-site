@@ -166,7 +166,7 @@ O NUNCA é focado exclusivamente em **educação profissional B2B**:
 
 - **E-mail**: contato@gruponunca.com.br
 - **Instagram**: [@nunca.nutri](https://www.instagram.com/nunca.nutri/)
-- **Comunidade**: [NÚCLEO](https://nucleo.gruponunca.com.br)
+- **Comunidade**: [NUCLEO](https://nucleo.gruponunca.com.br)
 
 ## 🔧 Scripts Disponíveis
 

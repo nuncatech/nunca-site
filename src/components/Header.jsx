@@ -31,8 +31,8 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 100 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-background/95 dark:bg-background-dark/95 backdrop-blur-sm shadow-md'
-          : 'bg-transparent'
+        ? 'bg-background/95 dark:bg-background-dark/95 backdrop-blur-sm shadow-md'
+        : 'bg-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,8 +53,8 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all hover:bg-accent/10 dark:hover:bg-accent-dark/10 ${location.pathname === item.path
-                    ? 'text-accent dark:text-accent-dark font-semibold'
-                    : 'text-primary dark:text-primary-dark'
+                  ? 'text-accent dark:text-accent-dark font-semibold'
+                  : 'text-primary dark:text-primary-dark'
                   }`}
               >
                 {item.label}
@@ -71,7 +71,7 @@ const Header = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-2.5 bg-cta text-cta-foreground rounded-md font-semibold text-sm hover:bg-cta/90 hover:scale-105 transition-all shadow-lg hover:shadow-xl"
             >
-              Entrar no NÚCLEO
+              Entrar no NUCLEO
             </a>
           </div>
 

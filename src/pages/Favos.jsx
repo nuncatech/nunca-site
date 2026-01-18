@@ -46,7 +46,7 @@ const Favos = () => {
                         </h2>
                         <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
                             <p>
-                                Os Favos são os mini cursos do NÚCLEO do NUNCA.
+                                Os Favos são os mini cursos do NUCLEO do NUNCA.
                             </p>
                             <p>
                                 Eles são formações focadas, pensadas para aprofundar um tema específico, desenvolver uma habilidade concreta ou organizar um recorte importante de um assunto sem precisar entrar em um percurso longo.
@@ -151,7 +151,7 @@ const Favos = () => {
                             className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-lg"
                         >
                             <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">
-                                Os Favos dentro do NÚCLEO
+                                Os Favos dentro do NUCLEO
                             </h3>
                             <p className="text-foreground/80 dark:text-foreground-dark/80 mb-4">
                                 Os Favos funcionam de forma independente, como mini cursos avulsos.
@@ -191,7 +191,7 @@ const Favos = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Explorar os Favos no NÚCLEO →
+                                    Explorar os Favos no NUCLEO →
                                 </a>
                             </Button>
                         </div>

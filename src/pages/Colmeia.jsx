@@ -260,7 +260,7 @@ const Colmeia = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Conhecer a Colmeia no NÚCLEO →
+                                Conhecer a Colmeia no NUCLEO →
                             </a>
                         </Button>
                     </motion.div>
