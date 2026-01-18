@@ -86,7 +86,7 @@ const Home = () => {
               variants={fadeInUp}
               className="text-lg sm:text-xl text-foreground/80 dark:text-foreground-dark/80 leading-relaxed max-w-4xl mx-auto"
             >
-              Aqui, a nutrição é mais que técnica: é um caminho humano, possível e coletivo.
+              Aqui, a nutrição é mais que técnica: é um caminho humano, possível e coletivo. 🌱✨
             </motion.p>
           </motion.div>
 
@@ -98,14 +98,14 @@ const Home = () => {
             className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed max-w-4xl mx-auto"
           >
             <motion.p variants={fadeInUp}>
-              Nossas frentes de trabalho são diferentes, mas se articulam como partes de um mesmo corpo, unindo a prática profissional, a humanização e o compromisso social.
+              Nossas frentes de trabalho são diferentes, mas se articulam como partes de um mesmo corpo, unindo a prática profissional, a humanização e o compromisso social. 🤝🧠
             </motion.p>
             <motion.p variants={fadeInUp}>
-              No NUNCA, queremos fortalecer a prática profissional com afeto, democratizar o acesso à informação de qualidade, criar redes de apoio e abrir caminhos para quem precisa.
+              No NUNCA, queremos fortalecer a prática profissional com afeto, democratizar o acesso à informação de qualidade, criar redes de apoio e abrir caminhos para quem precisa. 🚀💖
             </motion.p>
             <motion.div variants={fadeInUp} className="bg-cta/10 border-l-4 border-cta p-6 my-8">
               <p className="text-xl font-semibold text-primary dark:text-primary-dark">
-                Acreditamos que todo caminho sólido é construído em conjunto.
+                Acreditamos que todo caminho sólido é construído em conjunto. 🏗️🧱
               </p>
             </motion.div>
           </motion.div>
@@ -236,17 +236,17 @@ const Home = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
-                Comu.Nunca
+                Comu.Nunca 🗣️✨
               </h2>
               <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed mb-6">
-                A Comu.Nunca é a nossa <strong>comunidade pública!</strong> O seu primeiro espaço exclusivo dentro da casa do NUNCA e o lugar onde você começa a conhecer de pertinho todo o ecossistema que estamos construindo.
+                A Comu.Nunca é a nossa <strong>comunidade pública!</strong> 🎉 O seu primeiro espaço exclusivo dentro da casa do NUNCA e o lugar onde você começa a conhecer de pertinho todo o ecossistema que estamos construindo.
               </p>
               <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed mb-6">
-                Essa comunidade existe para integrar todo mundo. Aqui é para conversar, trocar, falar, rir, expor ideias, pedir ajuda... É um lugar vivo onde a gente se encontra, se abraça, se ajuda e caminha uma do lado da outra.
+                Essa comunidade existe para integrar todo mundo. Aqui é para conversar, trocar, falar, rir, expor ideias, pedir ajuda... 💬😂 É um lugar vivo onde a gente se encontra, se abraça, se ajuda e caminha uma do lado da outra. 👯‍♀️
               </p>
               <div className="bg-accent/10 dark:bg-accent-dark/10 border-l-4 border-accent dark:border-accent-dark p-6 mb-6">
                 <p className="text-foreground/90 dark:text-foreground-dark/90 italic">
-                  "A Comu.Nunca não nasce pronta, não é estática... ela se constrói de pouco em pouco, com as pessoas que estão aqui dentro. E isso inclui você! Esse espaço é seu também."
+                  "A Comu.Nunca não nasce pronta, não é estática... ela se constrói de pouco em pouco, com as pessoas que estão aqui dentro. E isso inclui você! Esse espaço é seu também." 🏡❤️
                 </p>
               </div>
               <Button
@@ -323,22 +323,22 @@ const Home = () => {
               variants={fadeInUp}
               className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary dark:text-primary-dark mb-8 text-center"
             >
-              Nossos valores e compromissos
+              Nossos valores e compromissos 🌟🤝
             </motion.h2>
             <motion.div
               variants={staggerContainer}
               className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed"
             >
               <motion.p variants={fadeInUp}>
-                Nosso maior compromisso é ser a <strong>rede de apoio</strong> e a <strong>estrutura</strong> para uma comunidade que acredita que uma formação significativa nasce de quem a gente é, antes de mais nada.
+                Nosso maior compromisso é ser a <strong>rede de apoio</strong> e a <strong>estrutura</strong> para uma comunidade que acredita que uma formação significativa nasce de quem a gente é, antes de mais nada. 🧱🎋
               </motion.p>
               <motion.div variants={fadeInUp} className="bg-primary/5 dark:bg-primary-dark/5 border-l-4 border-primary dark:border-primary-dark p-6 my-8">
                 <p className="text-xl font-semibold text-primary dark:text-primary-dark italic">
-                  "A gente cuida do que te sustenta por dentro."
+                  "A gente cuida do que te sustenta por dentro." 🤍
                 </p>
               </motion.div>
               <motion.p variants={fadeInUp}>
-                Valorizamos a construção de uma rede real, com escuta, afeto e segurança, onde você pode crescer acompanhado. Acreditamos que a formação e a prática profissional não devem andar separadas, mas conectadas à sua vida, à sua essência e à comunidade da qual você faz parte.
+                Valorizamos a construção de uma rede real, com escuta, afeto e segurança, onde você pode crescer acompanhado. Acreditamos que a formação e a prática profissional não devem andar separadas, mas conectadas à sua vida, à sua essência e à comunidade da qual você faz parte. 🌐🤲
               </motion.p>
             </motion.div>
           </motion.div>

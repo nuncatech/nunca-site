@@ -41,19 +41,19 @@ const Favos = () => {
                         viewport={{ once: true }}
                         variants={fadeInUp}
                     >
-                        <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
-                            O que são os FAVOS do NUNCA?
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
+                            O que são os Favos? 🍯📒
                         </h2>
                         <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
                             <p>
-                                Os Favos são os mini cursos do NUCLEO do NUNCA.
+                                Os Favos são os <strong>mini cursos</strong> do NUCLEO do NUNCA.
                             </p>
                             <p>
-                                Eles são formações focadas, pensadas para aprofundar um tema específico, desenvolver uma habilidade concreta ou organizar um recorte importante de um assunto sem precisar entrar em um percurso longo.
+                                Eles são formações focadas, pensadas para aprofundar um tema específico, desenvolver uma habilidade concreta ou organizar um recorte importante de um assunto sem precisar entrar em um percurso longo. ✂️🎓
                             </p>
                             <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
                                 <p className="text-xl font-semibold text-primary dark:text-primary-dark">
-                                    Cada Favo tem começo, meio e fim. E cada um existe para resolver uma pergunta, um problema ou um interesse específico.
+                                    É conhecimento direto, prático e aplicável. Pra você estudar no seu tempo e no seu ritmo. ⏱️🏃‍♀️
                                 </p>
                             </div>
                         </div>
@@ -61,8 +61,46 @@ const Favos = () => {
                 </div>
             </section>
 
-            {/* Por que existem */}
+            {/* Características */}
             <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted dark:bg-muted-dark">
+                <div className="max-w-6xl mx-auto">
+                    <motion.div
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
+                            Vantagens dos Favos ✨
+                        </motion.h2>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { icon: "🎯", title: "Objetividade", desc: "Conteúdo focado e sem enrolação." },
+                            { icon: "💻", title: "100% Online", desc: "Assista de onde e quando quiser." },
+                            { icon: "📜", title: "Certificado", desc: "Comprovação de horas complementares." },
+                            { icon: "💰", title: "Acessível", desc: "Valores pensados para estudantes e recém-formados." }
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="bg-background dark:bg-background-dark p-6 rounded-lg text-center shadow-md border-t-4 border-primary dark:border-primary-dark hover:-translate-y-1 transition-transform"
+                            >
+                                <div className="text-4xl mb-4">{item.icon}</div>
+                                <h3 className="text-xl font-bold text-primary dark:text-primary-dark mb-2">{item.title}</h3>
+                                <p className="text-sm text-foreground/80 dark:text-foreground-dark/80">{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Por que existem */}
+            <section className="py-20 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial="initial"

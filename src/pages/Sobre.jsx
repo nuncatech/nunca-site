@@ -42,21 +42,21 @@ const Sobre = () => {
             variants={fadeInUp}
           >
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
-              Nossa Missão
+              Nossa Missão 🧭✨
             </h2>
             <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
               <p>
-                Aqui, a técnica caminha junto com a escuta e o conhecimento anda de mãos dadas com o afeto.
+                Aqui, a técnica caminha junto com a escuta e o conhecimento anda de mãos dadas com o afeto. 🤝🧠
               </p>
               <p>
-                Nossa estrutura se apoia em diferentes frentes de trabalho que não existem por acaso. Cada detalhe foi pensado para solucionar uma necessidade.
+                Nossa estrutura se apoia em diferentes frentes de trabalho que não existem por acaso. Cada detalhe foi pensado para solucionar uma necessidade. 💡⚙️
               </p>
               <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
                 <p className="text-xl font-bold text-primary dark:text-primary-dark">
-                  Pessoas são o "por quê" e o "por quem" do NUNCA.
+                  Pessoas são o "por quê" e o "por quem" do NUNCA. 👥❤️
                 </p>
                 <p className="text-base text-foreground/70 dark:text-foreground-dark/70 mt-2">
-                  Todos os projetos são estruturados para te fazer se sentir acolhido, ouvido e apoiado.
+                  Todos os projetos são estruturados para te fazer se sentir acolhido, ouvido e apoiado. 👐👂
                 </p>
               </div>
             </div>
@@ -74,17 +74,17 @@ const Sobre = () => {
             variants={fadeInUp}
           >
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
-              Como trabalhamos
+              Como trabalhamos 🛠️📋
             </h2>
             <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
               <p>
-                Fugimos da ideia de que o aprendizado precisa ser "cada um por si" e abraçamos a concepção de que, lado a lado, um ensina o outro, criando uma rede de aprendizado mais sólida e completa.
+                Fugimos da ideia de que o aprendizado precisa ser "cada um por si" e abraçamos a concepção de que, lado a lado, um ensina o outro, criando uma rede de aprendizado mais sólida e completa. 🕸️📚
               </p>
               <p>
-                Trabalhamos para que a troca constante entre profissionais e estudantes seja o ponto focal do NUNCA. Por isso, criamos diferentes espaços de aprendizado, pensados para atender o que cada pessoa precisa em um momento único.
+                Trabalhamos para que a troca constante entre profissionais e estudantes seja o ponto focal do NUNCA. Por isso, criamos diferentes espaços de aprendizado, pensados para atender o que cada pessoa precisa em um momento único. 🔄🎓
               </p>
               <p>
-                Tudo no NUNCA foi pensado e construído em conjunto, ouvindo de perto as necessidades e os desejos de estudantes e profissionais da área. Existimos para quem quer fazer parte de um projeto vivo, integrado e em constante crescimento.
+                Tudo no NUNCA foi pensado e construído em conjunto, ouvindo de perto as necessidades e os desejos de estudantes e profissionais da área. Existimos para quem quer fazer parte de um projeto vivo, integrado e em constante crescimento. 🌱🚀
               </p>
             </div>
           </motion.div>
@@ -102,16 +102,16 @@ const Sobre = () => {
           >
             <div className="bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary-dark/10 dark:to-accent-dark/10 p-12 rounded-2xl">
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
-                O NUNCA nasce com um propósito
+                O NUNCA nasce com um propósito 🎯
               </h2>
               <p className="text-2xl sm:text-3xl font-bold text-cta mb-8">
-                TRANSFORMAR BARREIRAS EM PONTES!
+                TRANSFORMAR BARREIRAS EM PONTES! 🌉✨
               </p>
               <p className="text-xl text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
-                A gente acredita em um outro jeito de andar. Mais leve, mais junto, mais possível.
+                A gente acredita em um outro jeito de andar. Mais leve, mais junto, mais possível. 🍃👣
               </p>
-              <p className="text-lg text-foreground/70 dark:text-foreground-dark/70 mt-6 italic">
-                E se isso também faz sentido pra você, vem com a gente.
+              <p className="text-lg text-foreground/70 dark:text-foreground-dark/80 mt-6 italic">
+                E se isso também faz sentido pra você, vem com a gente. 🤗💖
               </p>
             </div>
           </motion.div>
@@ -129,7 +129,7 @@ const Sobre = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-4">
-              Nossos Valores
+              Nossos Valores 💎
             </h2>
           </motion.div>
 
@@ -144,7 +144,7 @@ const Sobre = () => {
               <div className="text-4xl mb-4">🤝</div>
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Comunidade</h3>
               <p className="text-foreground/80 dark:text-foreground-dark/80">
-                Crescimento em rede, onde profissionais e estudantes se apoiam mutuamente.
+                Crescimento em rede, onde profissionais e estudantes se apoiam mutuamente. 🌐
               </p>
             </motion.div>
 
@@ -158,7 +158,7 @@ const Sobre = () => {
               <div className="text-4xl mb-4">❤️</div>
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Humanização</h3>
               <p className="text-foreground/80 dark:text-foreground-dark/80">
-                Cuidado centrado na pessoa, com escuta ativa, afeto e respeito à individualidade.
+                Cuidado centrado na pessoa, com escuta ativa, afeto e respeito à individualidade. 👂
               </p>
             </motion.div>
 
@@ -172,7 +172,7 @@ const Sobre = () => {
               <div className="text-4xl mb-4">📚</div>
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Formação</h3>
               <p className="text-foreground/80 dark:text-foreground-dark/80">
-                Educação continuada, prática e técnica caminhando juntas.
+                Educação continuada, prática e técnica caminhando juntas. 🎓
               </p>
             </motion.div>
           </div>
@@ -189,21 +189,21 @@ const Sobre = () => {
             variants={fadeInUp}
           >
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
-              Comu.Nunca
+              Comu.Nunca 🗣️
             </h2>
             <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
               <p>
-                A Comu.Nunca é a nossa comunidade pública! O seu primeiro espaço exclusivo dentro da casa do NUNCA e o lugar onde você começa a conhecer de pertinho todo o ecossistema que estamos construindo.
+                A Comu.Nunca é a nossa comunidade pública! O seu primeiro espaço exclusivo dentro da casa do NUNCA e o lugar onde você começa a conhecer de pertinho todo o ecossistema que estamos construindo. 🏠🔍
               </p>
               <p>
-                Essa comunidade existe para integrar todo mundo. Aqui é para conversar, trocar, falar, rir, expor ideias, pedir ajuda... É um lugar vivo onde a gente se encontra, se abraça, se ajuda e caminha uma do lado da outra.
+                Essa comunidade existe para integrar todo mundo. Aqui é para conversar, trocar, falar, rir, expor ideias, pedir ajuda... 💬😂 É um lugar vivo onde a gente se encontra, se abraça, se ajuda e caminha uma do lado da outra. 🤝
               </p>
               <div className="bg-primary/5 dark:bg-primary-dark/5 border-l-4 border-primary dark:border-primary-dark p-6 my-8">
                 <p className="text-xl font-semibold text-primary dark:text-primary-dark">
-                  A Comu.Nunca não nasce pronta, não é estática... ela se constrói de pouco em pouco, com as pessoas que estão aqui dentro.
+                  A Comu.Nunca não nasce pronta, não é estática... ela se constrói de pouco em pouco, com as pessoas que estão aqui dentro. 🏗️
                 </p>
                 <p className="text-base text-foreground/70 dark:text-foreground-dark/70 mt-2">
-                  E isso inclui você! Esse espaço é seu também.
+                  E isso inclui você! Esse espaço é seu também. 🫵✨
                 </p>
               </div>
             </div>

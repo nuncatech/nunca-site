@@ -41,16 +41,19 @@ const Lab = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
-              Mas afinal de contas... o que é o LAB?
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
+              O que é o LAB? 🤔💡
             </h2>
             <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
               <p>
-                O LAB é o nosso laboratório de ideias do NUNCA. Ele foi criado para promover, na prática, toda a integração da qual a gente tanto fala, de um jeito íntimo, vivo e com constante mudança.
+                O LAB é o nosso "Laboratório" de ideias, onde a teoria encontra a prática e a conversa flui sem amarras. 🧪✨
+              </p>
+              <p>
+                É um evento mensal que acontece em um formato híbrido, pensado para quem gosta de estar perto e para quem precisa da facilidade do online. 🌍💻
               </p>
               <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
                 <p className="text-xl font-semibold text-primary dark:text-primary-dark">
-                  Todo mês nós temos o LAB ONLINE e o LAB PRESENCIAL, sempre com novos temas, novos olhares e novas provocações.
+                  Nele, convidamos um palestrante de fora para enriquecer nossa discussão e ampliar nossos horizontes. 🗣️🌟
                 </p>
               </div>
             </div>
@@ -58,118 +61,121 @@ const Lab = () => {
         </div>
       </section>
 
-      {/* Formatos */}
+      {/* Como Funciona */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted dark:bg-muted-dark">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
+              Como funciona? ⚙️🗓️
+            </motion.h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-sm"
+              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-lg"
             >
               <div className="text-4xl mb-4">💻</div>
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">
-                LAB ONLINE
+                LAB Online
               </h3>
               <p className="text-foreground/80 dark:text-foreground-dark/80 mb-4">
-                Todo mês um palestrante convidado assume o palco e traz um tema, uma aula e uma forma diferente de enxergar aquele assunto.
+                Acontece via Zoom, permitindo que você participe de onde estiver. 🏠
               </p>
-              <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4">
-                Você entra na sala do Zoom através do seu login e senha da comunidade e assiste de onde estiver.
-              </p>
-              <div className="space-y-2 text-sm text-foreground/70 dark:text-foreground-dark/70">
-                <p>✓ Material de apoio</p>
-                <p>✓ Página de conteúdo</p>
-                <p>✓ Certificado de participação</p>
-                <p>✓ Roda de conversa ao vivo</p>
-                <p>✓ Brindes e sorteios especiais</p>
-              </div>
+              <ul className="space-y-2 text-foreground/70 dark:text-foreground-dark/70">
+                <li className="flex items-center">
+                  <span className="text-cta mr-2">•</span>
+                  Transmissão ao vivo 🔴
+                </li>
+                <li className="flex items-center">
+                  <span className="text-cta mr-2">•</span>
+                  Interação via chat 💬
+                </li>
+                <li className="flex items-center">
+                  <span className="text-cta mr-2">•</span>
+                  Material de apoio 📚
+                </li>
+              </ul>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-sm"
+              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-lg"
             >
-              <div className="text-4xl mb-4">🏢</div>
+              <div className="text-4xl mb-4">☕</div>
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">
-                LAB PRESENCIAL
+                LAB Presencial
               </h3>
               <p className="text-foreground/80 dark:text-foreground-dark/80 mb-4">
-                Todo mês, um palestrante diferente assume o palco do NUNCA, trazendo um tema, uma aula e um jeito novo de olhar para aquele assunto.
+                Para quem prefere o olho no olho e a energia do encontro físico. 👀⚡
               </p>
-              <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4">
-                Além da aula, você participa do BREAK, que é o coffee do NUNCA, pensado especialmente para você, como parte da experiência.
-              </p>
-              <div className="space-y-2 text-sm text-foreground/70 dark:text-foreground-dark/70">
-                <p>✓ Aula presencial</p>
-                <p>✓ BREAK (coffee especial)</p>
-                <p>✓ Certificado de participação</p>
-                <p>✓ Brindes e sorteios</p>
-                <p>✓ Networking presencial</p>
-              </div>
+              <ul className="space-y-2 text-foreground/70 dark:text-foreground-dark/70">
+                <li className="flex items-center">
+                  <span className="text-cta mr-2">•</span>
+                  Coffee break delicioso 🥐☕
+                </li>
+                <li className="flex items-center">
+                  <span className="text-cta mr-2">•</span>
+                  Networking presencial 🤝
+                </li>
+                <li className="flex items-center">
+                  <span className="text-cta mr-2">•</span>
+                  Ambiente acolhedor 🛋️
+                </li>
+              </ul>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Dinâmica */}
+      {/* Topics */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            variants={fadeInUp}
           >
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
-              Uma experiência em constante movimento
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8 text-center">
+              O que rola no LAB? 🧐📚
             </h2>
-            <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
-              <p>
-                Nos dois formatos, <strong>todo mês o conteúdo muda, os temas mudam, os palestrantes mudam e até o nosso Instagram muda</strong>, acompanhando o movimento do LAB.
-              </p>
-              <p>
-                Ao longo do ano, você tem a oportunidade de ver diversos palestrantes, circular por vários temas e viver muitas aulas diferentes, sempre com a integração, a atenção e a estrutura do NUNCA.
-              </p>
-              <div className="bg-primary/5 dark:bg-primary-dark/5 border-l-4 border-primary dark:border-primary-dark p-6 my-8">
-                <p className="text-xl font-semibold text-primary dark:text-primary-dark">
-                  O LAB não é um evento solto. É uma experiência contínua dentro do NUNCA.
-                </p>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                "Atualização científica sem 'nutrês' complicado 🧬",
+                "Discussão de casos reais 📝",
+                "Troca de experiências entre profissionais 🗣️",
+                "Debates sobre tendências na nutrição 📈"
+              ].map((topic, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-muted dark:bg-muted-dark p-6 rounded-lg flex items-center"
+                >
+                  <span className="text-cta text-xl mr-3">➜</span>
+                  <span className="text-foreground/80 dark:text-foreground-dark/80 font-medium">
+                    {topic}
+                  </span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Valores */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted dark:bg-muted-dark">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
-              Acessível e completo
-            </h2>
-            <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed mb-6">
-              O LAB foi pensado para ser <strong>acessível</strong>, uma porta de entrada real, um convite constante à troca, à prática e à formação contínua.
-            </p>
-            <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
-              Você paga um valor simbólico, mas participa de uma experiência completa, com conteúdo inédito, troca ao vivo, material de apoio, certificado, sorteios, integração e presença.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 to-transparent dark:from-primary-dark/10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial="initial"

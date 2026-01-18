@@ -149,8 +149,8 @@ const Colmeia = () => {
                 </div>
             </section>
 
-            {/* Como funciona */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8">
+            {/* Como funciona (Original, now removed/replaced by new sections) */}
+            {/* <section className="py-20 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial="initial"
@@ -196,7 +196,7 @@ const Colmeia = () => {
                         </div>
                     </motion.div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Suporte */}
             <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted dark:bg-muted-dark">
