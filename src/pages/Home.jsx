@@ -225,6 +225,92 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ComuNunca Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background dark:bg-background-dark">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
+                Comu.Nunca
+              </h2>
+              <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed mb-6">
+                A Comu.Nunca é a nossa <strong>comunidade pública!</strong> O seu primeiro espaço exclusivo dentro da casa do NUNCA e o lugar onde você começa a conhecer de pertinho todo o ecossistema que estamos construindo.
+              </p>
+              <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed mb-6">
+                Essa comunidade existe para integrar todo mundo. Aqui é para conversar, trocar, falar, rir, expor ideias, pedir ajuda... É um lugar vivo onde a gente se encontra, se abraça, se ajuda e caminha uma do lado da outra.
+              </p>
+              <div className="bg-accent/10 dark:bg-accent-dark/10 border-l-4 border-accent dark:border-accent-dark p-6 mb-6">
+                <p className="text-foreground/90 dark:text-foreground-dark/90 italic">
+                  "A Comu.Nunca não nasce pronta, não é estática... ela se constrói de pouco em pouco, com as pessoas que estão aqui dentro. E isso inclui você! Esse espaço é seu também."
+                </p>
+              </div>
+              <Button
+                asChild
+                variant="cta"
+                size="lg"
+              >
+                <a
+                  href="https://nucleo.gruponunca.com.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Entrar na Comu.Nunca →
+                </a>
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-muted dark:bg-muted-dark p-8 rounded-2xl"
+            >
+              <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
+                🔓 O que você encontra na ComuNunca
+              </h3>
+              <ul className="space-y-4 text-foreground/80 dark:text-foreground-dark/80">
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-cta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Avisos e novidades sobre tudo o que acontece no NUNCA</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-cta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Convites para aulas, encontros e eventos</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-cta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Conteúdos pontuais sobre prática, carreira, estudos e cuidado</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-cta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Espaços de conversa guiada com tópicos específicos</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-cta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Orientações sobre como entrar em cada espaço do NÚCLEO</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Values Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
