@@ -143,7 +143,7 @@ const Home = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20">
+              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20 flex flex-col">
                 <CardHeader>
                   <div className="text-4xl mb-2">💡</div>
                   <CardTitle className="dark:text-primary-dark">LAB</CardTitle>
@@ -151,8 +151,8 @@ const Home = () => {
                     Laboratório de ideias mensal
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4">
+                <CardContent className="flex-grow flex flex-col">
+                  <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4 flex-grow">
                     Eventos mensais online e presenciais com palestrantes convidados.
                   </p>
                   <Button variant="outline" asChild className="w-full">
@@ -163,7 +163,7 @@ const Home = () => {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20">
+              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20 flex flex-col">
                 <CardHeader>
                   <div className="text-4xl mb-2">🐝</div>
                   <CardTitle className="dark:text-primary-dark">Colmeia</CardTitle>
@@ -171,8 +171,8 @@ const Home = () => {
                     Mentorias modulares
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4">
+                <CardContent className="flex-grow flex flex-col">
+                  <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4 flex-grow">
                     Construa sua jornada de aprendizado no seu ritmo e do seu jeito.
                   </p>
                   <Button variant="outline" asChild className="w-full">
@@ -183,7 +183,7 @@ const Home = () => {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20">
+              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20 flex flex-col">
                 <CardHeader>
                   <div className="text-4xl mb-2">🍯</div>
                   <CardTitle className="dark:text-primary-dark">Favos</CardTitle>
@@ -191,8 +191,8 @@ const Home = () => {
                     Mini cursos focados
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4">
+                <CardContent className="flex-grow flex flex-col">
+                  <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4 flex-grow">
                     Aprofunde temas específicos com formações pontuais.
                   </p>
                   <Button variant="outline" asChild className="w-full">
@@ -203,7 +203,7 @@ const Home = () => {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20">
+              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20 flex flex-col">
                 <CardHeader>
                   <div className="text-4xl mb-2">💊</div>
                   <CardTitle className="dark:text-primary-dark">Cápsulas</CardTitle>
@@ -211,8 +211,8 @@ const Home = () => {
                     Comunidades temáticas
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4">
+                <CardContent className="flex-grow flex flex-col">
+                  <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 mb-4 flex-grow">
                     Espaços vivos de convivência e troca guiada.
                   </p>
                   <Button variant="outline" asChild className="w-full">
