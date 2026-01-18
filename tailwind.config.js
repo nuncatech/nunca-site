@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,18 +8,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#fbf6f3',
+        background: {
+          DEFAULT: '#fbf6f3',
+          dark: '#1a1a1a',
+        },
+        foreground: {
+          DEFAULT: '#2d2d2d',
+          dark: '#f5f5f5',
+        },
         primary: {
           DEFAULT: '#5c5f30',
           foreground: '#fbf6f3',
+          dark: '#a4a77d',
         },
         accent: {
           DEFAULT: '#ce8f8f',
           foreground: '#fbf6f3',
+          dark: '#d4a5a5',
         },
         cta: {
-          DEFAULT: '#fad02c',
-          foreground: '#5c5f30',
+          DEFAULT: '#f4a259',
+          foreground: '#2d2d2d',
+        },
+        muted: {
+          DEFAULT: '#f5f5f5',
+          dark: '#2d2d2d',
         },
       },
       fontFamily: {
@@ -28,6 +42,9 @@ export default {
       borderRadius: {
         lg: '12px',
         md: '8px',
+      },
+      transitionDuration: {
+        '300': '300ms',
       },
     },
   },

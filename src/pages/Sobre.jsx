@@ -9,31 +9,117 @@ const Sobre = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-background dark:bg-background-dark transition-colors">
       {/* Hero Section */}
       <motion.section
         initial="initial"
         animate="animate"
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-accent/10 to-background"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-accent/10 to-background dark:from-accent-dark/10 dark:to-background-dark"
       >
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             variants={fadeInUp}
-            className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-primary mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-primary dark:text-primary-dark mb-6"
           >
-            Sobre Nós
+            Sobre o NUNCA
           </motion.h1>
           <motion.p
             variants={fadeInUp}
-            className="text-xl text-primary/80"
+            className="text-xl text-foreground/80 dark:text-foreground-dark/80"
           >
-            Conheça nossa história, missão e os valores que guiam o NUNCA
+            Transformando barreiras em pontes
           </motion.p>
         </div>
       </motion.section>
 
-      {/* Missão e Valores */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Missão */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
+              Nossa Missão
+            </h2>
+            <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
+              <p>
+                Aqui, a técnica caminha junto com a escuta e o conhecimento anda de mãos dadas com o afeto.
+              </p>
+              <p>
+                Nossa estrutura se apoia em diferentes frentes de trabalho que não existem por acaso. Cada detalhe foi pensado para solucionar uma necessidade.
+              </p>
+              <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
+                <p className="text-xl font-bold text-primary dark:text-primary-dark">
+                  Pessoas são o "por quê" e o "por quem" do NUNCA.
+                </p>
+                <p className="text-base text-foreground/70 dark:text-foreground-dark/70 mt-2">
+                  Todos os projetos são estruturados para te fazer se sentir acolhido, ouvido e apoiado.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Como trabalhamos */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted dark:bg-muted-dark">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
+              Como trabalhamos
+            </h2>
+            <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
+              <p>
+                Fugimos da ideia de que o aprendizado precisa ser "cada um por si" e abraçamos a concepção de que, lado a lado, um ensina o outro, criando uma rede de aprendizado mais sólida e completa.
+              </p>
+              <p>
+                Trabalhamos para que a troca constante entre profissionais e estudantes seja o ponto focal do NUNCA. Por isso, criamos diferentes espaços de aprendizado, pensados para atender o que cada pessoa precisa em um momento único.
+              </p>
+              <p>
+                Tudo no NUNCA foi pensado e construído em conjunto, ouvindo de perto as necessidades e os desejos de estudantes e profissionais da área. Existimos para quem quer fazer parte de um projeto vivo, integrado e em constante crescimento.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Propósito */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <div className="bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary-dark/10 dark:to-accent-dark/10 p-12 rounded-2xl">
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
+                O NUNCA nasce com um propósito
+              </h2>
+              <p className="text-2xl sm:text-3xl font-bold text-cta mb-8">
+                TRANSFORMAR BARREIRAS EM PONTES!
+              </p>
+              <p className="text-xl text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
+                A gente acredita em um outro jeito de andar. Mais leve, mais junto, mais possível.
+              </p>
+              <p className="text-lg text-foreground/70 dark:text-foreground-dark/70 mt-6 italic">
+                E se isso também faz sentido pra você, vem com a gente.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Valores */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted dark:bg-muted-dark">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial="initial"
@@ -42,27 +128,23 @@ const Sobre = () => {
             variants={fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary mb-8">
-              Nossa Missão
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-4">
+              Nossos Valores
             </h2>
-            <p className="text-lg text-primary/80 leading-relaxed max-w-4xl mx-auto">
-              Transformar barreiras em pontes, conectando conhecimento científico atualizado com prática
-              clínica humanizada, formando profissionais competentes e oferecendo cuidado nutricional de excelência.
-            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-accent/5 p-8 rounded-lg"
+              className="bg-background dark:bg-background-dark p-8 rounded-lg text-center"
             >
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-2xl font-serif font-bold text-primary mb-4">Excelência</h3>
-              <p className="text-primary/80">
-                Compromisso com conhecimento científico atualizado e prática profissional de alta qualidade.
+              <div className="text-4xl mb-4">🤝</div>
+              <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Comunidade</h3>
+              <p className="text-foreground/80 dark:text-foreground-dark/80">
+                Crescimento em rede, onde profissionais e estudantes se apoiam mutuamente.
               </p>
             </motion.div>
 
@@ -71,11 +153,11 @@ const Sobre = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-primary/5 p-8 rounded-lg"
+              className="bg-background dark:bg-background-dark p-8 rounded-lg text-center"
             >
               <div className="text-4xl mb-4">❤️</div>
-              <h3 className="text-2xl font-serif font-bold text-primary mb-4">Humanização</h3>
-              <p className="text-primary/80">
+              <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Humanização</h3>
+              <p className="text-foreground/80 dark:text-foreground-dark/80">
                 Cuidado centrado na pessoa, com escuta ativa, afeto e respeito à individualidade.
               </p>
             </motion.div>
@@ -85,20 +167,20 @@ const Sobre = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="bg-cta/10 p-8 rounded-lg"
+              className="bg-background dark:bg-background-dark p-8 rounded-lg text-center"
             >
-              <div className="text-4xl mb-4">🌱</div>
-              <h3 className="text-2xl font-serif font-bold text-primary mb-4">Comunidade</h3>
-              <p className="text-primary/80">
-                Crescimento em rede, onde profissionais e estudantes se apoiam mutuamente.
+              <div className="text-4xl mb-4">📚</div>
+              <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Formação</h3>
+              <p className="text-foreground/80 dark:text-foreground-dark/80">
+                Educação continuada, prática e técnica caminhando juntas.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Nossa História */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+      {/* Comunidade */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial="initial"
@@ -106,32 +188,31 @@ const Sobre = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary mb-8">
-              Nossa História
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
+              Comu.Nunca
             </h2>
-            <div className="space-y-6 text-lg text-primary/80 leading-relaxed">
+            <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
               <p>
-                O NUNCA nasceu do sonho de criar um espaço integrado de formação, pesquisa e
-                prática em nutrição. A ideia surgiu da percepção de que era necessário um novo
-                modelo de atuação que conectasse de forma mais efetiva a academia com a prática clínica.
+                A Comu.Nunca é a nossa comunidade pública! O seu primeiro espaço exclusivo dentro da casa do NUNCA e o lugar onde você começa a conhecer de pertinho todo o ecossistema que estamos construindo.
               </p>
               <p>
-                Desde o início, nossa proposta foi inovadora: criar diferentes espaços complementares
-                que se retroalimentam, garantindo que conhecimento teórico, pesquisa científica, formação
-                profissional e prática clínica caminhem juntos.
+                Essa comunidade existe para integrar todo mundo. Aqui é para conversar, trocar, falar, rir, expor ideias, pedir ajuda... É um lugar vivo onde a gente se encontra, se abraça, se ajuda e caminha uma do lado da outra.
               </p>
-              <p>
-                Hoje, o NUNCA é uma realidade em crescimento, com profissionais dedicados e uma comunidade
-                engajada de estudantes, profissionais e pacientes que acreditam em nossa missão de transformar
-                a nutrição através do conhecimento e da humanização.
-              </p>
+              <div className="bg-primary/5 dark:bg-primary-dark/5 border-l-4 border-primary dark:border-primary-dark p-6 my-8">
+                <p className="text-xl font-semibold text-primary dark:text-primary-dark">
+                  A Comu.Nunca não nasce pronta, não é estática... ela se constrói de pouco em pouco, com as pessoas que estão aqui dentro.
+                </p>
+                <p className="text-base text-foreground/70 dark:text-foreground-dark/70 mt-2">
+                  E isso inclui você! Esse espaço é seu também.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-cta/10 to-accent/10 dark:from-cta/5 dark:to-accent-dark/10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial="initial"
@@ -139,18 +220,24 @@ const Sobre = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary mb-6">
-              Faça parte da nossa história
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
+              Faça parte dessa história
             </h2>
-            <p className="text-lg text-primary/80 mb-8">
-              Junte-se a nós nesta jornada de transformação da nutrição.
+            <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 mb-8">
+              O NUNCA é o mundo onde nada se constrói sozinho. Onde juntos vamos mais longe, um passinho de cada vez.
             </p>
             <Button
               asChild
               variant="cta"
               size="lg"
             >
-              <a href="/contato">Entre em contato</a>
+              <a
+                href="https://nucleo.gruponunca.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Entrar no NÚCLEO →
+              </a>
             </Button>
           </motion.div>
         </div>
