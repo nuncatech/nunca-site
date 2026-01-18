@@ -35,10 +35,10 @@ const Home = () => {
         <div className="relative max-w-4xl mx-auto text-center z-10">
           <motion.div {...fadeInUp}>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary dark:text-primary-dark mb-6 transition-colors">
-              O NUNCA é acima de tudo,
+              O NUNCA é acima de tudo um projeto de integração
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl text-foreground/90 dark:text-foreground-dark/90 mb-8 transition-colors">
-              um projeto de integração entre estudantes e profissionais da área da saúde
+              entre estudantes e profissionais da área da saúde
             </p>
             <p className="text-lg sm:text-xl text-foreground/80 dark:text-foreground-dark/80 mb-12 max-w-3xl mx-auto leading-relaxed">
               Criado para conectar pessoas, histórias e vivências, o NUNCA existe para ser a ponte e a estrutura para quem também acredita que crescer em comunidade é crescer mais forte e ir mais longe.
