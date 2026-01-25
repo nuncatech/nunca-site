@@ -9,6 +9,7 @@ import Favos from './pages/Favos';
 import Capsulas from './pages/Capsulas';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
+import Links from './pages/Links';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/capsulas" element={<Capsulas />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/contato" element={<Contato />} />
+              <Route path="/links" element={<Links />} />
             </Routes>
           </main>
           <Footer />
