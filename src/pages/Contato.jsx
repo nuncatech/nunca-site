@@ -115,10 +115,10 @@ const Contato = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-sm"
+              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-sm flex flex-col h-full"
             >
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Para Estudantes</h3>
-              <ul className="space-y-3 mb-6 text-foreground/80 dark:text-foreground-dark/80">
+              <ul className="space-y-3 mb-6 text-foreground/80 dark:text-foreground-dark/80 flex-grow">
                 <li className="flex items-start">
                   <span className="text-accent dark:text-accent-dark mr-2">•</span>
                   Programas de formação e mentorias
@@ -136,7 +136,7 @@ const Contato = () => {
                   Comunidades temáticas (Cápsulas)
                 </li>
               </ul>
-              <Button variant="outline" asChild className="w-full">
+              <Button variant="outline" asChild className="w-full mt-auto">
                 <a href="mailto:contato@gruponunca.com.br?subject=Oportunidades para Estudantes">
                   Saiba mais
                 </a>
@@ -147,10 +147,10 @@ const Contato = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-sm"
+              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-sm flex flex-col h-full"
             >
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Para Profissionais</h3>
-              <ul className="space-y-3 mb-6 text-foreground/80 dark:text-foreground-dark/80">
+              <ul className="space-y-3 mb-6 text-foreground/80 dark:text-foreground-dark/80 flex-grow">
                 <li className="flex items-start">
                   <span className="text-accent dark:text-accent-dark mr-2">•</span>
                   Mentorias modulares (Colmeia)
@@ -168,7 +168,7 @@ const Contato = () => {
                   Integração em comunidade
                 </li>
               </ul>
-              <Button variant="outline" asChild className="w-full">
+              <Button variant="outline" asChild className="w-full mt-auto">
                 <a href="mailto:contato@gruponunca.com.br?subject=Oportunidades para Profissionais">
                   Saiba mais
                 </a>
@@ -179,10 +179,10 @@ const Contato = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-sm"
+              className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-sm flex flex-col h-full"
             >
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Para Instituições</h3>
-              <ul className="space-y-3 mb-6 text-foreground/80 dark:text-foreground-dark/80">
+              <ul className="space-y-3 mb-6 text-foreground/80 dark:text-foreground-dark/80 flex-grow">
                 <li className="flex items-start">
                   <span className="text-accent dark:text-accent-dark mr-2">•</span>
                   Parcerias educacionais
@@ -200,7 +200,7 @@ const Contato = () => {
                   Desenvolvimento de protocolos
                 </li>
               </ul>
-              <Button variant="outline" asChild className="w-full">
+              <Button variant="outline" asChild className="w-full mt-auto">
                 <a href="mailto:contato@gruponunca.com.br?subject=Parcerias Institucionais">
                   Saiba mais
                 </a>
