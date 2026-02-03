@@ -42,7 +42,7 @@ const Header = () => {
             <img
               src="/imagens_nunca/logo nunca sem fundo.png"
               alt="NUNCA"
-              className="h-12 w-auto"
+              className="h-40 w-auto"
             />
           </Link>
 
