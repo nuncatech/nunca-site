@@ -40,7 +40,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="/imagens_nunca/logo nunca sem fundo.png"
+              src="/imagens_nunca/logo_nunca_sem_fundo.png"
               alt="NUNCA"
               className="h-40 w-auto"
             />

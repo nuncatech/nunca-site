@@ -26,7 +26,7 @@ const Home = () => {
         transition={{ duration: 1 }}
         className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20"
         style={{
-          backgroundImage: 'url(/imagens_nunca/capa 01.png)',
+          backgroundImage: 'url(/imagens_nunca/capa_01.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

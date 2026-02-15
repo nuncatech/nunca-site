@@ -8,7 +8,7 @@ const Footer = () => {
           {/* About */}
           <div className="md:col-span-1">
             <img
-              src="/imagens_nunca/tag nunca sem fundo.png"
+              src="/imagens_nunca/tag_nunca_sem_fundo.png"
               alt="NUNCA"
               className="h-16 w-auto mb-4 brightness-0 invert"
             />
