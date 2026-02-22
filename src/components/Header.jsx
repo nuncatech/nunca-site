@@ -20,7 +20,7 @@ const Header = () => {
     { path: '/lab', label: 'LAB' },
     { path: '/colmeia', label: 'Colmeia' },
     { path: '/favos', label: 'Favos' },
-    { path: '/capsulas', label: 'Cápsulas' },
+    // { path: '/capsulas', label: 'Cápsulas' },
     { path: '/sobre', label: 'Sobre' },
     { path: '/contato', label: 'Contato' },
   ];

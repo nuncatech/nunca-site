@@ -140,7 +140,7 @@ const Home = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             <motion.div variants={fadeInUp}>
               <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20 flex flex-col">
@@ -168,7 +168,7 @@ const Home = () => {
                   <div className="text-4xl mb-2">🐝</div>
                   <CardTitle className="dark:text-primary-dark">Colmeia</CardTitle>
                   <CardDescription className="dark:text-foreground-dark/70">
-                    Mentorias modulares
+                    Aprendizado modular
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
@@ -202,7 +202,7 @@ const Home = () => {
               </Card>
             </motion.div>
 
-            <motion.div variants={fadeInUp}>
+            {/* <motion.div variants={fadeInUp}>
               <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-2 dark:bg-background-dark dark:border-primary-dark/20 flex flex-col">
                 <CardHeader>
                   <div className="text-4xl mb-2">💊</div>
@@ -220,7 +220,7 @@ const Home = () => {
                   </Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </section>

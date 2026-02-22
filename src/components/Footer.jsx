@@ -67,11 +67,11 @@ const Footer = () => {
                   Favos
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/capsulas" className="text-sm text-primary-foreground/80 dark:text-foreground-dark/80 hover:text-cta transition-colors">
                   Cápsulas
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 

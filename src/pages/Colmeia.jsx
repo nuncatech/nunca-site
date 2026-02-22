@@ -27,7 +27,7 @@ const Colmeia = () => {
                         variants={fadeInUp}
                         className="text-xl text-foreground/80 dark:text-foreground-dark/80 font-medium"
                     >
-                        As Mentorias Modulares do NUNCA foram criadas para que você tenha liberdade enquanto aprende e aprenda no seu tempo!
+                        A Colmeia foi criada para que você tenha liberdade enquanto aprende e aprenda no seu tempo!
                     </motion.p>
                 </div>
             </motion.section>
@@ -46,7 +46,7 @@ const Colmeia = () => {
                         </h2>
                         <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
                             <p>
-                                A Colmeia é o sistema de mentorias modulares do NUNCA.
+                                A Colmeia é o sistema de aprendizado modular do NUNCA.
                             </p>
                             <p>
                                 Ela nasceu a partir de uma pergunta simples: <strong>Por que engessar o conhecimento se duas pessoas não aprendem da mesma forma a mesma coisa?</strong>
@@ -55,7 +55,7 @@ const Colmeia = () => {
                                 A Colmeia parte da ideia de que formação clínica é algo que se constrói com movimento e com sua neuroplasticidade sendo testada de diversas maneiras.
                             </p>
                             <p>
-                                Cada pessoa constrói seu aprendizado de um jeito diferente, no seu tempo e a partir das suas próprias necessidades. Por isso, o NUNCA não criou mentorias engessadas, com grade fechada e iguais para todo mundo.
+                                Cada pessoa constrói seu aprendizado de um jeito diferente, no seu tempo e a partir das suas próprias necessidades. Por isso, o NUNCA não criou formações engessadas, com grade fechada e iguais para todo mundo.
                             </p>
                             <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
                                 <p className="text-xl font-semibold text-primary dark:text-primary-dark">

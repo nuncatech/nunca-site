@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Lab from './pages/Lab';
 import Colmeia from './pages/Colmeia';
 import Favos from './pages/Favos';
-import Capsulas from './pages/Capsulas';
+// import Capsulas from './pages/Capsulas';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
 import Links from './pages/Links';
@@ -23,7 +23,7 @@ function App() {
               <Route path="/lab" element={<Lab />} />
               <Route path="/colmeia" element={<Colmeia />} />
               <Route path="/favos" element={<Favos />} />
-              <Route path="/capsulas" element={<Capsulas />} />
+              {/* <Route path="/capsulas" element={<Capsulas />} /> */}
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/links" element={<Links />} />
