@@ -10,6 +10,7 @@ import Favos from './pages/Favos';
 import Sobre from './pages/Sobre';
 import Contato from './pages/Contato';
 import Links from './pages/Links';
+import AppRedirect from './pages/AppRedirect';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/links" element={<Links />} />
+              <Route path="/app" element={<AppRedirect />} />
             </Routes>
           </main>
           <Footer />
