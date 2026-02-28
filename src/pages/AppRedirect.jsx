@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
 const IOS_URL = 'https://apps.apple.com/br/app/nunca-nucleo/id6758273413';
-const ANDROID_URL =
-    'https://play.google.com/store/apps/details?id=com.gruponunca.comunidade&hl=pt_BR&pli=1';
+const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.gruponunca.comunidade&hl=pt_BR&pli=1';
+const ANDROID_DEEP_LINK = 'market://details?id=com.gruponunca.comunidade&hl=pt_BR';
 const FALLBACK_URL = 'https://nucleo.gruponunca.com.br';
 
 function detectPlatform() {
@@ -50,7 +50,7 @@ const AppRedirect = () => {
         const p = detectPlatform();
         setPlatform(p);
         if (p === 'ios') window.location.href = IOS_URL;
-        else if (p === 'android') window.location.href = ANDROID_URL;
+        else if (p === 'android') window.location.href = ANDROID_DEEP_LINK;
     }, []);
 
     const isMobile = platform === 'ios' || platform === 'android';
@@ -100,8 +100,8 @@ const AppRedirect = () => {
                                 whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
                                 className={`flex items-center gap-4 w-full p-5 rounded-xl border-2 shadow-md hover:shadow-xl transition-all duration-300 group ${isCurrentPlatform
-                                        ? 'bg-white dark:bg-muted-dark border-primary dark:border-primary-dark'
-                                        : 'bg-white dark:bg-muted-dark border-primary/20 dark:border-primary-dark/30'
+                                    ? 'bg-white dark:bg-muted-dark border-primary dark:border-primary-dark'
+                                    : 'bg-white dark:bg-muted-dark border-primary/20 dark:border-primary-dark/30'
                                     }`}
                             >
                                 <span className="text-primary dark:text-primary-dark flex-shrink-0 transition-colors">
