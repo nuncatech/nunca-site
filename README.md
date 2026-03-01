@@ -1,4 +1,4 @@
-# NUNCA - Educação Profissional em Nutrição
+# NUNCA - Nucleo de Nutrição Clínica e Atualização
 
 > Transformando barreiras em pontes
 
