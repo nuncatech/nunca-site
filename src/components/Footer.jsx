@@ -14,7 +14,7 @@ const Footer = () => {
             />
             <p className="text-sm text-primary-foreground/80 dark:text-foreground-dark/80 max-w-md mb-6">
               Integração entre estudantes e profissionais da área da saúde.
-              Transformando barreiras em pontes.
+              NUNCA paramos de nutrir o que importa.
             </p>
 
             {/* Social Media Icons */}

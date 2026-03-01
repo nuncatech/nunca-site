@@ -1,6 +1,6 @@
 # NUNCA - Nucleo de Nutrição Clínica e Atualização
 
-> Transformando barreiras em pontes
+> NUNCA paramos de nutrir o que importa
 
 Site institucional do NUNCA (Núcleo de Nutrição, Clínica e Atualização), um projeto de integração entre estudantes e profissionais da área da saúde focado em educação profissional e formação continuada.
 

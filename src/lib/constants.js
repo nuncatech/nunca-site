@@ -21,6 +21,6 @@ export const ROUTES = {
 export const META = {
     SITE_NAME: 'NUNCA',
     SITE_TITLE: 'NUNCA - Núcleo de Nutrição, Clínica e Atualização',
-    SITE_DESCRIPTION: 'Integração entre estudantes e profissionais da área da saúde. Transformando barreiras em pontes.',
-    TAGLINE: 'Transformando barreiras em pontes',
+    SITE_DESCRIPTION: 'Integração entre estudantes e profissionais da área da saúde. NUNCA paramos de nutrir o que importa.',
+    TAGLINE: 'NUNCA paramos de nutrir o que importa',
 };

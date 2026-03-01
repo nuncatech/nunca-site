@@ -27,7 +27,7 @@ const Sobre = () => {
             variants={fadeInUp}
             className="text-xl text-foreground/80 dark:text-foreground-dark/80"
           >
-            Transformando barreiras em pontes
+            NUNCA paramos de nutrir o que importa
           </motion.p>
         </div>
       </motion.section>
