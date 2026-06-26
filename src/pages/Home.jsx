@@ -51,7 +51,7 @@ const Home = () => {
     },
     {
       question: "Como funcionam os encontros mensais?",
-      answer: "Realizamos encontros mensais em formato híbrido: presenciais em ambientes de alta qualidade e com transmissão ao vivo de alta definição para os membros que acompanham online. Nos encontros, abordamos de forma prática a discussão de casos clínicos reais, estudos de artigos científicos e painéis interativos."
+      answer: "Realizamos encontros mensais em formato híbrido: presenciais em Maringá - PR, e com transmissão ao vivo de alta definição para os membros que acompanham online. Para incentivar a presença ativa e a troca direta com o palestrante, a gravação do encontro fica disponível por 7 dias. O acesso aos encontros do LAB é pago mediante aquisição de ingresso."
     },
     {
       question: "O que é o NUCLEO?",
@@ -59,7 +59,7 @@ const Home = () => {
     },
     {
       question: "Como funcionam os Favos?",
-      answer: "Os Favos são os nossos minicursos: formações focadas e de curta duração, pensadas para aprofundar temas clínicos específicos e desenvolver habilidades práticas para o dia a dia do consultório."
+      answer: "Os Favos são os nossos minicursos pagos: formações focadas e de curta duração, pensadas para aprofundar temas clínicos específicos e desenvolver habilidades práticas para o dia a dia do consultório."
     },
     {
       question: "Como marcas ou clínicas podem patrocinar ou fazer parcerias?",
@@ -315,7 +315,7 @@ const Home = () => {
                 <div className="relative bg-background/90 dark:bg-background-dark/95 backdrop-blur-xl rounded-xl p-8 sm:p-10 border border-primary/10 dark:border-primary-dark/10 space-y-6">
                   <div className="flex justify-between items-start">
                     <span className="px-3 py-1 bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark rounded-md text-xs font-semibold">PRESENCIAL</span>
-                    <span className="text-xs text-foreground/50 dark:text-foreground-dark/50">São Paulo, SP</span>
+                    <span className="text-xs text-foreground/50 dark:text-foreground-dark/50">Maringá, PR</span>
                   </div>
                   <div className="space-y-3">
                     <h4 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark">Experiência Imersiva</h4>
@@ -361,7 +361,7 @@ const Home = () => {
                   </div>
                   <div className="flex items-center gap-2 text-xs text-foreground/60 dark:text-foreground-dark/50 pt-2">
                     <Tv className="w-4 h-4 text-cta" />
-                    <span>Gravações salvas em alta definição na área de membros</span>
+                    <span>Gravações disponíveis por 7 dias após o evento</span>
                   </div>
                 </div>
               </div>
@@ -395,7 +395,7 @@ const Home = () => {
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-cta" />
-                  <span>Hospedagem imediata dos episódios gravados para os membros</span>
+                  <span>Gravações disponíveis por 7 dias para incentivar as pessoas a estarem ao vivo com o palestrante</span>
                 </li>
               </ul>
             </motion.div>
@@ -446,9 +446,9 @@ const Home = () => {
               <div className="text-cta">
                 <Calendar className="w-8 h-8" />
               </div>
-              <h4 className="text-xl font-serif font-semibold text-primary dark:text-primary-dark">Encontros do LAB Inclusos</h4>
+              <h4 className="text-xl font-serif font-semibold text-primary dark:text-primary-dark">Encontros do LAB (Pago)</h4>
               <p className="text-sm text-foreground/75 dark:text-foreground-dark/70 font-light leading-relaxed">
-                Acesso completo aos encontros mensais (presenciais ou online) sem custos adicionais aos membros ativos.
+                Acesso aos nossos eventos mensais presenciais ou online mediante aquisição de ingresso avulso.
               </p>
             </div>
 
@@ -457,21 +457,20 @@ const Home = () => {
               <div className="text-cta">
                 <BookOpen className="w-8 h-8" />
               </div>
-              <h4 className="text-xl font-serif font-semibold text-primary dark:text-primary-dark">Favos (Minicursos)</h4>
+              <h4 className="text-xl font-serif font-semibold text-primary dark:text-primary-dark">Favos (Minicursos - Pago)</h4>
               <p className="text-sm text-foreground/75 dark:text-foreground-dark/70 font-light leading-relaxed">
-                Acesso facilitado e descontos exclusivos nos minicursos voltados a temas específicos da rotina clínica e prática terapêutica.
+                Acesso a minicursos avulsos voltados a temas específicos da rotina clínica e prática terapêutica.
               </p>
             </div>
 
             {/* Benefit 5 */}
-            <div className="p-8 rounded-xl border border-primary/5 dark:border-primary-dark/10 bg-muted/10 dark:bg-muted-dark/5 space-y-4 hover:bg-muted/30 dark:hover:bg-muted-dark/10 transition-colors duration-300 relative overflow-hidden group">
-              <div className="absolute top-3 right-3 px-2 py-0.5 bg-accent/25 text-accent dark:text-accent-dark text-[10px] font-bold tracking-wider rounded uppercase">Em Breve</div>
-              <div className="text-cta opacity-80">
+            <div className="p-8 rounded-xl border border-primary/5 dark:border-primary-dark/10 bg-muted/10 dark:bg-muted-dark/5 space-y-4 hover:bg-muted/30 dark:hover:bg-muted-dark/10 transition-colors duration-300">
+              <div className="text-cta">
                 <BookOpen className="w-8 h-8" />
               </div>
-              <h4 className="text-xl font-serif font-semibold text-primary/80 dark:text-primary-dark/80">Biblioteca de Gravações</h4>
-              <p className="text-sm text-foreground/60 dark:text-foreground-dark/60 font-light leading-relaxed">
-                Acervo contendo as gravações dos encontros anteriores, resumos científicos e materiais complementares para estudo no seu tempo.
+              <h4 className="text-xl font-serif font-semibold text-primary dark:text-primary-dark">Gravações dos Encontros</h4>
+              <p className="text-sm text-foreground/75 dark:text-foreground-dark/70 font-light leading-relaxed">
+                Acesso às gravações dos encontros do LAB por até 7 dias, promovendo a presença síncrona e o engajamento ao vivo com o palestrante.
               </p>
             </div>
 
@@ -491,22 +490,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 8. PARCEIROS E PATROCINADORES */}
-      <section className="py-16 bg-muted/20 dark:bg-muted-dark/5 border-y border-primary/5 dark:border-primary-dark/5">
-        <div className="max-w-6xl mx-auto px-4">
-          <p className="text-center text-xs uppercase tracking-widest font-semibold text-foreground/45 dark:text-foreground-dark/40 mb-8">
-            Parceiros institucionais que apoiam a ciência e a evolução da saúde
-          </p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-65 dark:opacity-50">
-            <div className="text-base font-serif font-bold tracking-tight text-primary dark:text-primary-dark">ClinTech</div>
-            <div className="text-base font-serif font-bold tracking-tight text-primary dark:text-primary-dark">Evidência Labs</div>
-            <div className="text-base font-serif font-bold tracking-tight text-primary dark:text-primary-dark">NutriLife</div>
-            <div className="text-base font-serif font-bold tracking-tight text-primary dark:text-primary-dark">ActiveHealth</div>
-            <div className="text-base font-serif font-bold tracking-tight text-primary dark:text-primary-dark">Vanguarda Médica</div>
-          </div>
-        </div>
-      </section>
 
       {/* 9. PRÓXIMOS ENCONTROS (Redesigned to show CTA redirecting to community) */}
       <section id="proximos-encontros" className="py-28 px-4 sm:px-6 lg:px-8 bg-background dark:bg-background-dark relative">
