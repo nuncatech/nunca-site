@@ -27,7 +27,7 @@ export default {
           dark: '#d4a5a5',
         },
         cta: {
-          DEFAULT: '#f4a259',
+          DEFAULT: '#fad02c',
           foreground: '#2d2d2d',
         },
         muted: {

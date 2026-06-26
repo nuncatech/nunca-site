@@ -18,9 +18,7 @@ const Header = () => {
   const navItems = [
     { path: '/', label: 'Início' },
     { path: '/lab', label: 'LAB' },
-    { path: '/colmeia', label: 'Colmeia' },
     { path: '/favos', label: 'Favos' },
-    // { path: '/capsulas', label: 'Cápsulas' },
     { path: '/sobre', label: 'Sobre' },
     { path: '/contato', label: 'Contato' },
   ];

@@ -27,7 +27,7 @@ const Favos = () => {
                         variants={fadeInUp}
                         className="text-xl text-foreground/80 dark:text-foreground-dark/80 font-medium"
                     >
-                        Os mini cursos do NUNCA, para quem quer aprofundar um tema específico
+                        Os minicursos do NUNCA, para quem quer aprofundar um tema específico da área da saúde
                     </motion.p>
                 </div>
             </motion.section>
@@ -44,16 +44,16 @@ const Favos = () => {
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
                             O que são os Favos? 🍯📒
                         </h2>
-                        <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
+                        <div className="space-y-6 text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed font-light">
                             <p>
-                                Os Favos são os <strong>mini cursos</strong> do NUCLEO do NUNCA.
+                                Os Favos são os <strong>minicursos</strong> de curta duração e alta densidade prática oferecidos pelo NUNCA.
                             </p>
                             <p>
-                                Eles são formações focadas, pensadas para aprofundar um tema específico, desenvolver uma habilidade concreta ou organizar um recorte importante de um assunto sem precisar entrar em um percurso longo. ✂️🎓
+                                Eles são desenhados para aprofundar um tema específico da prática clínica, desenvolver uma habilidade concreta ou organizar um recorte importante de um assunto de forma ágil.
                             </p>
                             <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
                                 <p className="text-xl font-semibold text-primary dark:text-primary-dark">
-                                    É conhecimento direto, prático e aplicável. Pra você estudar no seu tempo e no seu ritmo. ⏱️🏃‍♀️
+                                    É conhecimento direto, prático e aplicável, permitindo que você estude no seu próprio ritmo.
                                 </p>
                             </div>
                         </div>
@@ -77,10 +77,10 @@ const Favos = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
-                            { icon: "🎯", title: "Objetividade", desc: "Conteúdo focado e sem enrolação." },
-                            { icon: "💻", title: "100% Online", desc: "Assista de onde e quando quiser." },
-                            { icon: "📜", title: "Certificado", desc: "Comprovação de horas complementares." },
-                            { icon: "💰", title: "Acessível", desc: "Valores pensados para estudantes e recém-formados." }
+                            { icon: "🎯", title: "Objetividade", desc: "Conteúdo focado no que realmente importa na prática." },
+                            { icon: "💻", title: "Flexibilidade", desc: "Aulas estruturadas para o seu dia a dia." },
+                            { icon: "📜", title: "Certificado", desc: "Comprovação de horas para a sua formação." },
+                            { icon: "💰", title: "Acessibilidade", desc: "Modelos acessíveis para estudantes e recém-formados." }
                         ].map((item, index) => (
                             <motion.div
                                 key={index}
@@ -111,11 +111,11 @@ const Favos = () => {
                         <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
                             Por que os Favos existem
                         </h2>
-                        <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
-                            Porque às vezes você não quer (ou não precisa) de uma jornada longa. Você só quer entender melhor um ponto, aprender algo específico ou aprofundar um tema que já faz parte da sua prática.
+                        <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed font-light">
+                            Porque nem toda necessidade de aprendizado exige uma jornada longa de especialização. Muitas vezes, o profissional ou estudante precisa apenas compreender de forma aprofundada um recorte clínico, aprender um protocolo específico ou dominar uma nova ferramenta diagnóstica.
                         </p>
-                        <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed mt-6">
-                            <strong>Os Favos existem para isso: serem pontuais.</strong>
+                        <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed mt-6 font-semibold">
+                            Os Favos existem para preencher essa lacuna de forma pontual e focada.
                         </p>
                     </motion.div>
                 </div>
@@ -133,72 +133,31 @@ const Favos = () => {
                         <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-8">
                             Como funcionam os Favos
                         </h2>
-                        <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 mb-6">
-                            Cada Favo é um mini curso com foco claro. Eles podem incluir:
+                        <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 mb-6 font-light">
+                            Cada Favo aborda um tema claro e bem delimitado, incluindo:
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                             {[
-                                'Aulas ao vivo ou gravadas',
-                                'Materiais de apoio',
-                                'Exercícios ou práticas',
-                                'Leituras guiadas',
-                                'Espaço de troca (quando fizer sentido)',
-                                'Estrutura presencial diferenciada'
+                                'Aulas práticas e objetivas',
+                                'Materiais e guias de apoio para consulta rápida',
+                                'Estudos de casos práticos e aplicados',
+                                'Indicações de leituras científicas fundamentais',
+                                'Espaço para tirar dúvidas do tema específico'
                             ].map((item, index) => (
                                 <div key={index} className="flex items-start gap-3">
                                     <svg className="w-6 h-6 text-cta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <span className="text-foreground/80 dark:text-foreground-dark/80">{item}</span>
+                                    <span className="text-foreground/80 dark:text-foreground-dark/80 font-light">{item}</span>
                                 </div>
                             ))}
                         </div>
                         <div className="bg-primary/5 dark:bg-primary-dark/5 border-l-4 border-primary dark:border-primary-dark p-6">
                             <p className="text-lg font-semibold text-primary dark:text-primary-dark">
-                                O importante é: você entra, aprofunda, integra e sai com algo organizado.
+                                O objetivo principal é: você entra, aprofunda seu conhecimento em um assunto delimitado e sai com ferramentas práticas para sua rotina de atendimento.
                             </p>
                         </div>
                     </motion.div>
-                </div>
-            </section>
-
-            {/* Diferencial */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted dark:bg-muted-dark">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
-                                O que torna os Favos diferentes
-                            </h2>
-                            <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed">
-                                Os Favos não são aulas soltas. Cada Favo existe porque existe um tema que precisa ter um espaço só dele.
-                            </p>
-                            <p className="text-lg text-foreground/80 dark:text-foreground-dark/80 leading-relaxed mt-4">
-                                Se no final, você se apaixonar e quiser entrar na Colmeia, é uma decisão que você vai tomar com certeza.
-                            </p>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-background dark:bg-background-dark p-8 rounded-lg shadow-lg"
-                        >
-                            <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">
-                                Os Favos dentro do NUCLEO
-                            </h3>
-                            <p className="text-foreground/80 dark:text-foreground-dark/80 mb-4">
-                                Os Favos funcionam de forma independente, como mini cursos avulsos.
-                            </p>
-                            <p className="text-foreground/80 dark:text-foreground-dark/80">
-                                Eles conversam com o ecossistema, mas não dependem dele.
-                            </p>
-                        </motion.div>
-                    </div>
                 </div>
             </section>
 
@@ -213,23 +172,23 @@ const Favos = () => {
                     >
                         <div className="bg-gradient-to-br from-cta/10 to-accent/10 dark:from-cta/5 dark:to-accent-dark/10 p-12 rounded-2xl">
                             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark mb-6">
-                                Em uma frase
+                                Tem interesse em aprofundar seus conhecimentos?
                             </h2>
-                            <p className="text-xl text-foreground/90 dark:text-foreground-dark/90 leading-relaxed mb-8">
-                                Os Favos são para quando você quer conhecer melhor um tema, mas ainda não decidiu se quer uma jornada mais longa.
+                            <p className="text-xl text-foreground/90 dark:text-foreground-dark/90 leading-relaxed mb-8 font-light">
+                                Os Favos são para quem deseja ir direto ao ponto e adquirir novas ferramentas científicas e práticas para a conduta clínica.
                             </p>
                             <Button
                                 asChild
                                 variant="cta"
                                 size="xl"
-                                className="text-lg"
+                                className="text-lg cursor-pointer"
                             >
                                 <a
                                     href="https://nucleo.gruponunca.com.br"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Explorar os Favos no NUCLEO →
+                                    Conhecer Favos Disponíveis →
                                 </a>
                             </Button>
                         </div>

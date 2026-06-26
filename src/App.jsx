@@ -4,7 +4,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Lab from './pages/Lab';
-import Colmeia from './pages/Colmeia';
 import Favos from './pages/Favos';
 // import Capsulas from './pages/Capsulas';
 import Sobre from './pages/Sobre';
@@ -22,7 +21,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/lab" element={<Lab />} />
-              <Route path="/colmeia" element={<Colmeia />} />
               <Route path="/favos" element={<Favos />} />
               {/* <Route path="/capsulas" element={<Capsulas />} /> */}
               <Route path="/sobre" element={<Sobre />} />

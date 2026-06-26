@@ -125,7 +125,7 @@ const Contato = () => {
                   </li> */}
                 <li className="flex items-start">
                   <span className="text-accent dark:text-accent-dark mr-2">•</span>
-                  Mini cursos (Favos)
+                  Favos
                 </li>
                 <li className="flex items-start">
                   <span className="text-accent dark:text-accent-dark mr-2">•</span>
@@ -151,10 +151,6 @@ const Contato = () => {
             >
               <h3 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark mb-4">Para Profissionais</h3>
               <ul className="space-y-3 mb-6 text-foreground/80 dark:text-foreground-dark/80 flex-grow">
-                {/* <li className="flex items-start">
-                    <span className="text-accent dark:text-accent-dark mr-2">•</span>
-                    Mentorias modulares (Colmeia)
-                  </li> */}
                 <li className="flex items-start">
                   <span className="text-accent dark:text-accent-dark mr-2">•</span>
                   Cursos de aprofundamento
