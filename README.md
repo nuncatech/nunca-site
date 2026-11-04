@@ -207,3 +207,14 @@ Este é um projeto privado do NUNCA. Para contribuições internas:
 ---
 
 *"A gente cuida do que te sustenta por dentro."*
+## Checkout (`/checkout/:slug`)
+
+Página de compra própria (PIX estático + cartão via fatura Asaas), com backend no n8n
+(`nuncatech/n8n` → `checkout/`, workflow `checkout-api`). Produtos, preços e cupons vêm da
+planilha "NUNCA – Checkout"; o servidor recalcula tudo, a página só exibe.
+
+- Variáveis opcionais: `VITE_CHECKOUT_API` (padrão `https://n8n.gruponunca.com.br/webhook`)
+  e `VITE_TURNSTILE_SITE_KEY`. Em `localhost` o Turnstile usa a chave de teste da Cloudflare.
+- Cupom por link: `/checkout/<slug>?cupom=CODIGO`.
+- Dados lembrados em `localStorage` (`nunca_checkout_profile`; CPF só se a pessoa marcar).
+- Testes da lógica: `npm test`.
