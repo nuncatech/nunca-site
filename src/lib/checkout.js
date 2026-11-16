@@ -9,6 +9,20 @@ export const API_BASE = (ENV.VITE_CHECKOUT_API || 'https://n8n.gruponunca.com.br
 export const TURNSTILE_SITE_KEY = ENV.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAAFyzC2NrD3Yy-gwQ';
 export const TURNSTILE_TEST_KEY = '1x00000000000000000000AA';
 
+// Cartão: link de pagamento do Asaas de cada produto (= config_id da aba `produtos`).
+// O cartão não passa pelo n8n: o botão abre direto o link, e o payment-workflow-assas libera pelo paymentLink.
+// O Asaas não permite embutir (X-Frame-Options), por isso é redirecionamento.
+export const ASAAS_LINKS = {
+  'nutricao-precisao': 'vg0jgsbt0t7uw76a',
+  'master-class-endurance-capelato': 'dpj4hip035hevge2',
+  'master-class-glp1-capelato': 'rd93q8y9y4h4kcyd',
+  'antropo-360': '44lc1lltezodeo4e',
+  'imersao-nutricao-bariatrica': 'r4c89px39fizcjo5',
+  'imersao-nutricao-bariatrica-promo': 'odg0gtl9kxij42y4',
+  'laminas-atendimento-bariatrico': '97f8ftgvx7o5jlwr',
+};
+export const asaasLinkUrl = (slug) => (ASAAS_LINKS[slug] ? `https://www.asaas.com/c/${ASAAS_LINKS[slug]}` : null);
+
 export const PROFILE_KEY = 'nunca_checkout_profile';
 const PENDING_PREFIX = 'nunca_checkout_pix_';
 const PENDING_TTL_MS = 24 * 3600 * 1000;

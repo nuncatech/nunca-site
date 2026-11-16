@@ -26,7 +26,13 @@ export default {
           foreground: '#fbf6f3',
           dark: '#d4a5a5',
         },
+        // Destaque (CTA) = verde NUNCA, muda com o tema (ver --cta em index.css).
         cta: {
+          DEFAULT: 'rgb(var(--cta) / <alpha-value>)',
+          foreground: 'rgb(var(--cta-fg) / <alpha-value>)',
+        },
+        // Terciária = amarelo NUNCA: marcadores, bordas de citação, detalhes.
+        tertiary: {
           DEFAULT: '#fad02c',
           foreground: '#2d2d2d',
         },

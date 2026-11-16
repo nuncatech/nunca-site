@@ -8,7 +8,7 @@ import Turnstile from '@/components/checkout/Turnstile';
 import useNoIndex from '@/hooks/useNoIndex';
 import { LINKS } from '@/lib/constants';
 import {
-  api, formatBRL, parcelaLabel, maskTelefone, maskCpf, validarForm, emailValido, invoiceUrlSegura, CAMPO_MSG,
+  api, asaasLinkUrl, formatBRL, maskTelefone, maskCpf, validarForm, emailValido, CAMPO_MSG,
   loadProfile, saveProfile, clearProfile, loadPendingPix, savePendingPix, clearPendingPix,
 } from '@/lib/checkout';
 
@@ -51,7 +51,7 @@ export default function Checkout() {
         {loadErr ? (
           <Aviso tipo="erro" titulo="Ops">{loadErr}</Aviso>
         ) : !produto ? (
-          <div className="flex items-center justify-center py-24 text-foreground/60 dark:text-foreground-dark/60" aria-live="polite">
+          <div className="flex items-center justify-center py-24 text-foreground/70 dark:text-foreground-dark/70" aria-live="polite">
             <Loader2 className="h-6 w-6 animate-spin mr-2" /> Carregando…
           </div>
         ) : pix ? (
@@ -59,7 +59,7 @@ export default function Checkout() {
         ) : (
           <Formulario slug={slug} produto={produto} cupomInicial={searchParams.get('cupom') || ''} onPix={setPix} />
         )}
-        <p className="mt-8 flex items-center justify-center gap-1.5 text-xs text-foreground/50 dark:text-foreground-dark/50">
+        <p className="mt-8 flex items-center justify-center gap-1.5 text-xs text-foreground/65 dark:text-foreground-dark/65">
           <Lock className="h-3.5 w-3.5" /> Pagamento seguro · dados do cartão digitados só no ambiente do Asaas
         </p>
       </div>
@@ -92,8 +92,9 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
   }));
   const [lembrar, setLembrar] = useState(true);
   const [lembrarCpf, setLembrarCpf] = useState(!!perfilSalvo?.cpf);
-  const [metodo, setMetodo] = useState(produto.metodos.includes('pix') ? 'pix' : 'cartao');
-  const [parcelas, setParcelas] = useState(1);
+  const cartaoUrl = produto.metodos.includes('cartao') ? asaasLinkUrl(slug) : null;
+  const temPix = produto.metodos.includes('pix');
+  const [metodo, setMetodo] = useState(temPix || !cartaoUrl ? 'pix' : 'cartao');
   const [cupomInput, setCupomInput] = useState(cupomInicial);
   const [cupomAberto, setCupomAberto] = useState(!!cupomInicial);
   const [cupom, setCupom] = useState(null);
@@ -108,10 +109,9 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
   const [membro, setMembro] = useState(null); // true | false | null (desconhecido)
   const emailChecado = useRef('');
 
-  const simulacao = cupom?.simulacao?.length ? cupom.simulacao : produto.parcelas;
   const liquido = cupom ? cupom.liquidoCents : produto.precoCents;
-  const linhaCartao = simulacao.find((s) => s.parcelas === parcelas) || simulacao[0];
-  const total = metodo === 'pix' ? liquido : linhaCartao?.totalCents;
+  // Cartão: valor do link do Asaas (preço cheio; cupom vale só no PIX).
+  const total = metodo === 'pix' ? liquido : produto.precoCents;
 
   const set = (k) => (e) => {
     let v = e.target.value;
@@ -139,7 +139,7 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
     if (!/^[A-Z0-9_-]{6,30}$/.test(c)) { setCupomErr('Cupom inválido'); return; }
     setCupomLoading(true);
     try {
-      const metodoQ = produto.metodos.includes('cartao') ? 'cartao' : 'pix';
+      const metodoQ = 'pix';
       const email = emailValido(form.email) ? form.email.trim().toLowerCase() : undefined;
       const r = await api.cotar({ slug, metodo: metodoQ, parcelas: 1, cupom: c, email });
       if (!r.desconto) throw new Error('Cupom inválido');
@@ -150,7 +150,7 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
     } finally {
       setCupomLoading(false);
     }
-  }, [form.email, produto.metodos, slug]);
+  }, [form.email, slug]);
 
   // ?cupom=XXXX na URL: aplica sozinho.
   const autoCupom = useRef(false);
@@ -163,6 +163,11 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
   const enviar = async (e) => {
     e.preventDefault();
     setErroGeral('');
+    if (metodo === 'cartao') {
+      setEnviando(true);
+      window.location.assign(cartaoUrl);
+      return; // mantém "enviando" até sair da página
+    }
     const errs = validarForm({ ...form, metodo });
     setErros(errs);
     if (Object.keys(errs).length) {
@@ -174,15 +179,10 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
     if (lembrar) saveProfile(form, { lembrarCpf }); else clearProfile();
     try {
       const r = await api.pedido({
-        slug, metodo, parcelas: metodo === 'cartao' ? parcelas : 1,
+        slug, metodo: 'pix', parcelas: 1,
         nome: form.nome.trim(), email: form.email.trim().toLowerCase(), tel: form.tel, cpf: form.cpf.replace(/\D/g, '') || undefined,
         cupom: cupom?.codigo || undefined, turnstileToken: token,
       });
-      if (r.metodo === 'cartao') {
-        if (!invoiceUrlSegura(r.invoiceUrl)) throw new Error('Não conseguimos abrir a página de pagamento. Tente novamente.');
-        window.location.assign(r.invoiceUrl);
-        return; // mantém "enviando" até sair da página
-      }
       const pedido = { orderId: r.orderId, payload: r.pix.payload, recebedor: r.pix.recebedor, totalCents: r.totalCents, email: form.email.trim().toLowerCase(), membro };
       savePendingPix(slug, pedido);
       onPix(pedido);
@@ -201,16 +201,16 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
     <form onSubmit={enviar} noValidate className="space-y-6">
       {/* Resumo */}
       <section className="rounded-lg bg-muted dark:bg-muted-dark p-5">
-        <p className="text-xs uppercase tracking-wide text-foreground/60 dark:text-foreground-dark/60 mb-1">Você está comprando</p>
+        <p className="text-xs uppercase tracking-wide text-foreground/70 dark:text-foreground-dark/70 mb-1">Você está comprando</p>
         <h1 className="text-2xl font-serif font-bold leading-tight">{produto.nome}</h1>
         <div className="mt-3 flex items-baseline gap-2 flex-wrap">
-          {cupom && <span className="text-foreground/50 dark:text-foreground-dark/50 line-through">{formatBRL(produto.precoCents)}</span>}
+          {cupom && metodo === 'pix' && <span className="text-foreground/65 dark:text-foreground-dark/65 line-through">{formatBRL(produto.precoCents)}</span>}
           <span className="text-2xl font-semibold text-foreground dark:text-foreground-dark" data-testid="total">{formatBRL(total)}</span>
-          {metodo === 'cartao' && parcelas > 1 && (
-            <span className="text-sm text-foreground/70 dark:text-foreground-dark/70">em {parcelas}x de {formatBRL(linhaCartao.parcelaCents)}</span>
+          {metodo === 'cartao' && (
+            <span className="text-sm text-foreground/70 dark:text-foreground-dark/70">parcelamento na página do Asaas</span>
           )}
         </div>
-        {cupom && (
+        {cupom && metodo === 'pix' && (
           <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-primary dark:text-primary-dark">
             <Tag className="h-4 w-4" /> Cupom <strong>{cupom.codigo}</strong>: −{formatBRL(cupom.valorCents)}
             <button type="button" onClick={removerCupom} className="ml-1 opacity-60 hover:opacity-100" aria-label="Remover cupom"><X className="h-4 w-4" /></button>
@@ -218,6 +218,28 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
         )}
       </section>
 
+      {/* Pagamento */}
+      <section className="space-y-3">
+        <h2 className="text-lg font-serif font-bold">Pagamento</h2>
+        <div className={`grid gap-3 ${temPix && cartaoUrl ? 'grid-cols-2' : 'grid-cols-1'}`} role="radiogroup">
+          {temPix && (
+            <MetodoBtn ativo={metodo === 'pix'} onClick={() => setMetodo('pix')} icon={QrCode} titulo="PIX" sub={`À vista · ${formatBRL(liquido)}`} />
+          )}
+          {cartaoUrl && (
+            <MetodoBtn ativo={metodo === 'cartao'} onClick={() => setMetodo('cartao')} icon={CreditCard} titulo="Cartão de crédito" sub="Parcelado no Asaas" />
+          )}
+        </div>
+        <p className="text-xs text-foreground/70 dark:text-foreground-dark/70">
+          {metodo === 'pix'
+            ? 'Geramos o QR Code na próxima tela. O acesso é liberado assim que conferirmos o pagamento.'
+            : 'Você vai para a página segura do Asaas, onde escolhe as parcelas e digita os dados do cartão. Use lá o mesmo e-mail da sua conta no Núcleo para o acesso ser liberado nela.'}
+        </p>
+        {metodo === 'cartao' && cupom && (
+          <p className="text-xs text-foreground/70 dark:text-foreground-dark/70">O cupom vale só no PIX.</p>
+        )}
+      </section>
+
+      {metodo === 'pix' && (<>
       {/* Dados */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
@@ -272,32 +294,6 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
         </div>
       </section>
 
-      {/* Pagamento */}
-      <section className="space-y-3">
-        <h2 className="text-lg font-serif font-bold">Pagamento</h2>
-        <div className={`grid gap-3 ${produto.metodos.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`} role="radiogroup">
-          {produto.metodos.includes('pix') && (
-            <MetodoBtn ativo={metodo === 'pix'} onClick={() => setMetodo('pix')} icon={QrCode} titulo="PIX" sub={`À vista · ${formatBRL(liquido)}`} />
-          )}
-          {produto.metodos.includes('cartao') && (
-            <MetodoBtn ativo={metodo === 'cartao'} onClick={() => setMetodo('cartao')} icon={CreditCard} titulo="Cartão de crédito"
-              sub={simulacao.length > 1 ? `Em até ${simulacao.length}x` : 'À vista'} />
-          )}
-        </div>
-        {metodo === 'cartao' && simulacao.length > 0 && (
-          <Campo id="ck-parcelas" label="Parcelas">
-            <select id="ck-parcelas" className={inputCls()} value={parcelas} onChange={(e) => setParcelas(Number(e.target.value))}>
-              {simulacao.map((s) => <option key={s.parcelas} value={s.parcelas}>{parcelaLabel(s)}</option>)}
-            </select>
-          </Campo>
-        )}
-        <p className="text-xs text-foreground/60 dark:text-foreground-dark/60">
-          {metodo === 'pix'
-            ? 'Geramos o QR Code na próxima tela. O acesso é liberado assim que conferirmos o pagamento.'
-            : 'Você vai para a página segura do Asaas para digitar os dados do cartão. Parcelado com acréscimo da operadora.'}
-        </p>
-      </section>
-
       {/* Cupom */}
       <section>
         {!cupom && !cupomAberto && (
@@ -320,12 +316,13 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
       </section>
 
       <Turnstile key={tsKey} onToken={(t) => { setToken(t); if (t) setTsFalhou(false); }} onError={() => setTsFalhou(true)} />
+      </>)}
 
       {erroGeral && <Aviso tipo="erro">{erroGeral}</Aviso>}
 
       <Button type="submit" variant="cta" size="xl" className="w-full hover:scale-100" disabled={enviando}>
         {enviando ? <><Loader2 className="h-5 w-5 animate-spin" /> Processando…</>
-          : metodo === 'pix' ? `Gerar PIX de ${formatBRL(total)}` : `Pagar ${formatBRL(total)} no cartão`}
+          : metodo === 'pix' ? `Gerar PIX de ${formatBRL(total)}` : `Pagar ${formatBRL(total)} no cartão (Asaas)`}
       </Button>
     </form>
   );
@@ -339,9 +336,9 @@ function MetodoBtn({ ativo, onClick, icon, titulo, sub }) {
       className={`text-left rounded-lg border-2 p-4 transition-colors ${ativo
         ? 'border-primary bg-primary/5 dark:border-primary-dark dark:bg-primary-dark/10'
         : 'border-foreground/10 dark:border-foreground-dark/15 hover:border-primary/40'}`}>
-      <Icon className={`h-5 w-5 mb-2 ${ativo ? 'text-primary dark:text-primary-dark' : 'text-foreground/50 dark:text-foreground-dark/50'}`} />
+      <Icon className={`h-5 w-5 mb-2 ${ativo ? 'text-primary dark:text-primary-dark' : 'text-foreground/65 dark:text-foreground-dark/65'}`} />
       <p className="font-semibold text-foreground dark:text-foreground-dark">{titulo}</p>
-      <p className="text-sm text-foreground/60 dark:text-foreground-dark/60">{sub}</p>
+      <p className="text-sm text-foreground/70 dark:text-foreground-dark/70">{sub}</p>
     </button>
   );
 }
@@ -409,13 +406,13 @@ function PixPagamento({ slug, produto, pedido, onNovo }) {
   return (
     <div className="space-y-6">
       <section className="text-center">
-        <p className="text-xs uppercase tracking-wide text-foreground/60 dark:text-foreground-dark/60 mb-1">{produto.nome}</p>
+        <p className="text-xs uppercase tracking-wide text-foreground/70 dark:text-foreground-dark/70 mb-1">{produto.nome}</p>
         <h1 className="text-2xl font-serif font-bold">Pague com PIX</h1>
         <p className="mt-2 text-3xl font-semibold text-foreground dark:text-foreground-dark" data-testid="pix-total">{formatBRL(pedido.totalCents)}</p>
       </section>
 
       <div className="mx-auto w-[260px] h-[260px] rounded-lg bg-white p-2 shadow-sm flex items-center justify-center">
-        {qr ? <img src={qr} alt="QR Code PIX" width={244} height={244} /> : <Loader2 className="h-6 w-6 animate-spin text-foreground/40" />}
+        {qr ? <img src={qr} alt="QR Code PIX" width={244} height={244} /> : <Loader2 className="h-6 w-6 animate-spin text-foreground/60" />}
       </div>
 
       <div>
@@ -449,7 +446,7 @@ function PixPagamento({ slug, produto, pedido, onNovo }) {
         </Button>
       )}
 
-      <p className="text-center text-xs text-foreground/50 dark:text-foreground-dark/50">
+      <p className="text-center text-xs text-foreground/65 dark:text-foreground-dark/65">
         Pedido <span className="font-mono">{pedido.orderId.slice(0, 8)}</span> ·{' '}
         <button type="button" className="underline hover:text-foreground" onClick={onNovo}>fazer um novo pedido</button>
       </p>

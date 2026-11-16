@@ -51,7 +51,7 @@ const Sobre = () => {
               <p>
                 Nossa estrutura se apoia em diferentes frentes de trabalho que não existem por acaso. Cada detalhe foi pensado para solucionar uma necessidade. 💡⚙️
               </p>
-              <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
+              <div className="bg-tertiary/10 border-l-4 border-tertiary p-6 my-8">
                 <p className="text-xl font-bold text-primary dark:text-primary-dark">
                   Pessoas são o "por quê" e o "por quem" do NUNCA. 👥❤️
                 </p>
