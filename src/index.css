@@ -5,6 +5,14 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --cta: 92 95 48;      /* #5c5f30 */
+    --cta-fg: 251 246 243; /* #fbf6f3 */
+  }
+  .dark {
+    --cta: 184 188 135;   /* #b8bc87 */
+    --cta-fg: 26 26 26;   /* #1a1a1a */
+  }
   body {
     @apply transition-colors duration-300;
   }

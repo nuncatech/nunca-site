@@ -51,7 +51,7 @@ const Lab = () => {
               <p>
                 É um evento mensal que acontece em um formato híbrido, pensado para quem gosta de estar perto e para quem precisa da facilidade do online. 🌍💻
               </p>
-              <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
+              <div className="bg-tertiary/10 border-l-4 border-tertiary p-6 my-8">
                 <p className="text-xl font-semibold text-primary dark:text-primary-dark">
                   Nele, convidamos um palestrante de fora para enriquecer nossa discussão e ampliar nossos horizontes. 🗣️🌟
                 </p>
@@ -91,15 +91,15 @@ const Lab = () => {
               </p>
               <ul className="space-y-2 text-foreground/70 dark:text-foreground-dark/70">
                 <li className="flex items-center">
-                  <span className="text-cta mr-2">•</span>
+                  <span className="text-tertiary mr-2">•</span>
                   Transmissão ao vivo 🔴
                 </li>
                 <li className="flex items-center">
-                  <span className="text-cta mr-2">•</span>
+                  <span className="text-tertiary mr-2">•</span>
                   Interação via chat 💬
                 </li>
                 <li className="flex items-center">
-                  <span className="text-cta mr-2">•</span>
+                  <span className="text-tertiary mr-2">•</span>
                   Material de apoio 📚
                 </li>
               </ul>
@@ -120,15 +120,15 @@ const Lab = () => {
               </p>
               <ul className="space-y-2 text-foreground/70 dark:text-foreground-dark/70">
                 <li className="flex items-center">
-                  <span className="text-cta mr-2">•</span>
+                  <span className="text-tertiary mr-2">•</span>
                   Coffee break delicioso 🥐☕
                 </li>
                 <li className="flex items-center">
-                  <span className="text-cta mr-2">•</span>
+                  <span className="text-tertiary mr-2">•</span>
                   Networking presencial 🤝
                 </li>
                 <li className="flex items-center">
-                  <span className="text-cta mr-2">•</span>
+                  <span className="text-tertiary mr-2">•</span>
                   Ambiente acolhedor 🛋️
                 </li>
               </ul>
@@ -163,7 +163,7 @@ const Lab = () => {
                   transition={{ delay: index * 0.1 }}
                   className="bg-muted dark:bg-muted-dark p-6 rounded-lg flex items-center"
                 >
-                  <span className="text-cta text-xl mr-3">➜</span>
+                  <span className="text-tertiary text-xl mr-3">➜</span>
                   <span className="text-foreground/80 dark:text-foreground-dark/80 font-medium">
                     {topic}
                   </span>

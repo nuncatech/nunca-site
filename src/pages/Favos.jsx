@@ -51,7 +51,7 @@ const Favos = () => {
                             <p>
                                 Eles são desenhados para aprofundar um tema específico da prática clínica, desenvolver uma habilidade concreta ou organizar um recorte importante de um assunto de forma ágil.
                             </p>
-                            <div className="bg-cta/10 border-l-4 border-cta p-6 my-8">
+                            <div className="bg-tertiary/10 border-l-4 border-tertiary p-6 my-8">
                                 <p className="text-xl font-semibold text-primary dark:text-primary-dark">
                                     É conhecimento direto, prático e aplicável, permitindo que você estude no seu próprio ritmo.
                                 </p>

@@ -113,7 +113,7 @@ const Links = () => {
                     transition={{ delay: 0.5, duration: 0.5 }}
                     className="text-center mt-12 pt-8 border-t border-primary/10 dark:border-primary-dark/10"
                 >
-                    <p className="text-sm text-foreground/60 dark:text-foreground-dark/60 transition-colors">
+                    <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 transition-colors">
                         Feito com 💚 pelo NUNCA
                     </p>
                 </motion.div>

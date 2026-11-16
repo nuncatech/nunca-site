@@ -60,9 +60,9 @@ function Cartao({ slug }) {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="font-semibold leading-snug text-foreground dark:text-foreground-dark">
-            {p ? p.nome : erro ? slug : <span className="inline-flex items-center gap-1.5 text-foreground/50"><Loader2 className="h-4 w-4 animate-spin" /> {slug}</span>}
+            {p ? p.nome : erro ? slug : <span className="inline-flex items-center gap-1.5 font-normal text-foreground/65 dark:text-foreground-dark/65"><Loader2 className="h-4 w-4 animate-spin" /> {slug}</span>}
           </p>
-          <p className="mt-0.5 text-xs text-foreground/50 dark:text-foreground-dark/50 break-all">/checkout/{slug}</p>
+          <p className="mt-0.5 text-xs text-foreground/65 dark:text-foreground-dark/65 break-all">/checkout/{slug}</p>
         </div>
         {p && <p className="shrink-0 font-semibold text-primary dark:text-primary-dark">{formatBRL(p.precoCents)}</p>}
       </div>
@@ -78,7 +78,7 @@ function Cartao({ slug }) {
             {copiado ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />} {copiado ? 'Copiado' : 'Copiar link'}
           </button>
           <Link to={`/checkout/${slug}`}
-            className="inline-flex items-center gap-1.5 rounded-md bg-primary dark:bg-primary-dark px-3 py-1.5 text-sm text-white dark:text-background-dark hover:opacity-90 transition-opacity">
+            className="inline-flex items-center gap-1.5 rounded-md bg-cta px-3 py-1.5 text-sm font-medium text-cta-foreground hover:bg-cta/90 transition-opacity">
             <ExternalLink className="h-4 w-4" /> Abrir
           </Link>
         </div>
@@ -92,7 +92,7 @@ function Secao({ titulo, dica, slugs }) {
   return (
     <section className="mt-10">
       <h2 className="text-lg font-serif font-bold text-foreground dark:text-foreground-dark">{titulo}</h2>
-      {dica && <p className="mt-1 text-sm text-foreground/60 dark:text-foreground-dark/60">{dica}</p>}
+      {dica && <p className="mt-1 text-sm text-foreground/70 dark:text-foreground-dark/70">{dica}</p>}
       <ul className="mt-4 space-y-3">{slugs.map((s) => <Cartao key={s} slug={s} />)}</ul>
     </section>
   );

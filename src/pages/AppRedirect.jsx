@@ -109,7 +109,7 @@ const AppRedirect = () => {
                                 </span>
 
                                 <div className="text-left flex-1 min-w-0">
-                                    <p className="text-xs text-foreground/50 dark:text-foreground-dark/50 mb-0.5 transition-colors">
+                                    <p className="text-xs text-foreground/65 dark:text-foreground-dark/65 mb-0.5 transition-colors">
                                         {store.label}
                                     </p>
                                     <p className="text-lg font-semibold text-primary dark:text-primary-dark transition-colors group-hover:text-cta">
@@ -136,7 +136,7 @@ const AppRedirect = () => {
                     transition={{ delay: 0.5, duration: 0.5 }}
                     className="text-center pt-6 border-t border-primary/10 dark:border-primary-dark/10"
                 >
-                    <p className="text-sm text-foreground/50 dark:text-foreground-dark/50 mb-3 transition-colors">
+                    <p className="text-sm text-foreground/65 dark:text-foreground-dark/65 mb-3 transition-colors">
                         ou acesse pelo navegador
                     </p>
                     <a

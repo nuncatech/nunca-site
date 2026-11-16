@@ -99,14 +99,14 @@ const Home = () => {
           >
             {/* Tagline Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 dark:border-primary-dark/20 bg-background/50 dark:bg-background-dark/50 backdrop-blur-md text-xs font-semibold tracking-wider text-primary dark:text-primary-dark uppercase">
-              <Sparkles className="w-3.5 h-3.5 text-cta" />
+              <Sparkles className="w-3.5 h-3.5 text-tertiary" />
               <span>O Novo Ecossistema da Saúde</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary dark:text-primary-dark leading-[1.15] tracking-tight">
               A comunidade onde profissionais da saúde <br className="hidden md:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-cta to-accent dark:from-primary-dark dark:via-cta dark:to-accent-dark">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-tertiary to-accent dark:from-primary-dark dark:via-tertiary dark:to-accent-dark">
                 evoluem juntos
               </span>{" "}
               através da ciência.
@@ -152,8 +152,8 @@ const Home = () => {
             className="space-y-12"
           >
             {/* Guide Phrase Quote */}
-            <div className="relative border-l-4 border-cta pl-8 py-4 my-10">
-              <span className="absolute -top-6 -left-2 text-7xl font-serif text-cta/20 select-none">“</span>
+            <div className="relative border-l-4 border-tertiary pl-8 py-4 my-10">
+              <span className="absolute -top-6 -left-2 text-7xl font-serif text-tertiary/30 select-none">“</span>
               <blockquote className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-primary dark:text-primary-dark italic leading-snug">
                 Estamos construindo a comunidade que gostaríamos de ter encontrado quando começamos nossa carreira na saúde.
               </blockquote>
@@ -290,15 +290,15 @@ const Home = () => {
               </p>
               <ul className="space-y-3 font-light text-foreground/85 dark:text-foreground-dark/80">
                 <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cta" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-tertiary" />
                   <span>Networking qualificado e geração de parcerias clínicas</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cta" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-tertiary" />
                   <span>Material de apoio impresso e espaço para debates abertos</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cta" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-tertiary" />
                   <span>Experiência premium (coffee breaks focados em integração)</span>
                 </li>
               </ul>
@@ -315,7 +315,7 @@ const Home = () => {
                 <div className="relative bg-background/90 dark:bg-background-dark/95 backdrop-blur-xl rounded-xl p-8 sm:p-10 border border-primary/10 dark:border-primary-dark/10 space-y-6">
                   <div className="flex justify-between items-start">
                     <span className="px-3 py-1 bg-primary/10 dark:bg-primary-dark/10 text-primary dark:text-primary-dark rounded-md text-xs font-semibold">PRESENCIAL</span>
-                    <span className="text-xs text-foreground/50 dark:text-foreground-dark/50">Maringá, PR</span>
+                    <span className="text-xs text-foreground/65 dark:text-foreground-dark/65">Maringá, PR</span>
                   </div>
                   <div className="space-y-3">
                     <h4 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark">Experiência Imersiva</h4>
@@ -351,7 +351,7 @@ const Home = () => {
                 <div className="relative bg-background/90 dark:bg-background-dark/95 backdrop-blur-xl rounded-xl p-8 sm:p-10 border border-primary/10 dark:border-primary-dark/10 space-y-6">
                   <div className="flex justify-between items-start">
                     <span className="px-3 py-1 bg-accent/10 dark:bg-accent-dark/10 text-accent dark:text-accent-dark rounded-md text-xs font-semibold">ON-DEMAND & AO VIVO</span>
-                    <span className="text-xs text-foreground/50 dark:text-foreground-dark/50">Online</span>
+                    <span className="text-xs text-foreground/65 dark:text-foreground-dark/65">Online</span>
                   </div>
                   <div className="space-y-3">
                     <h4 className="text-2xl font-serif font-bold text-primary dark:text-primary-dark">Transmissão Síncrona</h4>
@@ -359,7 +359,7 @@ const Home = () => {
                       "Para quem não reside na capital ou prefere acompanhar à distância, nossa transmissão entrega áudio cristalino, múltiplos ângulos de câmera e interação ativa em tempo real."
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-foreground/60 dark:text-foreground-dark/50 pt-2">
+                  <div className="flex items-center gap-2 text-xs text-foreground/70 dark:text-foreground-dark/65 pt-2">
                     <Tv className="w-4 h-4 text-cta" />
                     <span>Gravações disponíveis por 7 dias após o evento</span>
                   </div>
@@ -386,15 +386,15 @@ const Home = () => {
               </p>
               <ul className="space-y-3 font-light text-foreground/85 dark:text-foreground-dark/80">
                 <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cta" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-tertiary" />
                   <span>Transmissão simultânea profissional sem interrupções</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cta" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-tertiary" />
                   <span>Acesso direto ao chat de discussões científicas e enquetes virtuais</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-cta" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-tertiary" />
                   <span>Gravações disponíveis por 7 dias para incentivar as pessoas a estarem ao vivo com o palestrante</span>
                 </li>
               </ul>
@@ -481,7 +481,7 @@ const Home = () => {
                 <Sparkles className="w-8 h-8" />
               </div>
               <h4 className="text-xl font-serif font-semibold text-primary/80 dark:text-primary-dark/80">Clube de Benefícios</h4>
-              <p className="text-sm text-foreground/60 dark:text-foreground-dark/60 font-light leading-relaxed">
+              <p className="text-sm text-foreground/70 dark:text-foreground-dark/70 font-light leading-relaxed">
                 Vantagens, convênios e descontos especiais com marcas parceiras e apoiadoras do ecossistema NUNCA.
               </p>
             </div>
@@ -600,7 +600,7 @@ const Home = () => {
                 <ArrowRight className="w-5 h-5" />
               </a>
             </Button>
-            <Button asChild variant="outline" size="xl" className="w-full sm:w-auto text-lg cursor-pointer bg-background/50 backdrop-blur-md">
+            <Button asChild variant="outline" size="xl" className="w-full sm:w-auto text-lg cursor-pointer bg-background/50 dark:bg-background-dark/50 backdrop-blur-md">
               <a href="mailto:contato@gruponunca.com.br" className="flex items-center gap-2">
                 Seja um Patrocinador
                 <ExternalLink className="w-4 h-4 text-primary dark:text-primary-dark" />
