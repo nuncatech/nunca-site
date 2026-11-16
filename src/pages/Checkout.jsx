@@ -8,7 +8,7 @@ import Turnstile from '@/components/checkout/Turnstile';
 import useNoIndex from '@/hooks/useNoIndex';
 import { LINKS } from '@/lib/constants';
 import {
-  api, asaasLinkUrl, formatBRL, maskTelefone, maskCpf, validarForm, emailValido, CAMPO_MSG,
+  api, asaasLinkUrl, formatBRL, parcelaLabel, maskTelefone, maskCpf, validarForm, emailValido, invoiceUrlSegura, CAMPO_MSG,
   loadProfile, saveProfile, clearProfile, loadPendingPix, savePendingPix, clearPendingPix,
 } from '@/lib/checkout';
 
@@ -92,9 +92,10 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
   }));
   const [lembrar, setLembrar] = useState(true);
   const [lembrarCpf, setLembrarCpf] = useState(!!perfilSalvo?.cpf);
-  const cartaoUrl = produto.metodos.includes('cartao') ? asaasLinkUrl(slug) : null;
-  const temPix = produto.metodos.includes('pix');
-  const [metodo, setMetodo] = useState(temPix || !cartaoUrl ? 'pix' : 'cartao');
+  // Sem pré-seleção: a pessoa escolhe PIX ou cartão antes de ver os campos (exceto produto com um só método).
+  const [metodo, setMetodo] = useState(produto.metodos.length === 1 ? produto.metodos[0] : null);
+  const linkAsaas = asaasLinkUrl(slug);
+  const [parcelas, setParcelas] = useState(1);
   const [cupomInput, setCupomInput] = useState(cupomInicial);
   const [cupomAberto, setCupomAberto] = useState(!!cupomInicial);
   const [cupom, setCupom] = useState(null);
@@ -109,9 +110,10 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
   const [membro, setMembro] = useState(null); // true | false | null (desconhecido)
   const emailChecado = useRef('');
 
+  const simulacao = cupom?.simulacao?.length ? cupom.simulacao : produto.parcelas;
   const liquido = cupom ? cupom.liquidoCents : produto.precoCents;
-  // Cartão: valor do link do Asaas (preço cheio; cupom vale só no PIX).
-  const total = metodo === 'pix' ? liquido : produto.precoCents;
+  const linhaCartao = simulacao.find((s) => s.parcelas === parcelas) || simulacao[0];
+  const total = metodo === 'cartao' ? linhaCartao?.totalCents : liquido;
 
   const set = (k) => (e) => {
     let v = e.target.value;
@@ -139,7 +141,7 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
     if (!/^[A-Z0-9_-]{6,30}$/.test(c)) { setCupomErr('Cupom inválido'); return; }
     setCupomLoading(true);
     try {
-      const metodoQ = 'pix';
+      const metodoQ = produto.metodos.includes('cartao') ? 'cartao' : 'pix';
       const email = emailValido(form.email) ? form.email.trim().toLowerCase() : undefined;
       const r = await api.cotar({ slug, metodo: metodoQ, parcelas: 1, cupom: c, email });
       if (!r.desconto) throw new Error('Cupom inválido');
@@ -150,7 +152,7 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
     } finally {
       setCupomLoading(false);
     }
-  }, [form.email, slug]);
+  }, [form.email, produto.metodos, slug]);
 
   // ?cupom=XXXX na URL: aplica sozinho.
   const autoCupom = useRef(false);
@@ -163,11 +165,6 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
   const enviar = async (e) => {
     e.preventDefault();
     setErroGeral('');
-    if (metodo === 'cartao') {
-      setEnviando(true);
-      window.location.assign(cartaoUrl);
-      return; // mantém "enviando" até sair da página
-    }
     const errs = validarForm({ ...form, metodo });
     setErros(errs);
     if (Object.keys(errs).length) {
@@ -179,14 +176,25 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
     if (lembrar) saveProfile(form, { lembrarCpf }); else clearProfile();
     try {
       const r = await api.pedido({
-        slug, metodo: 'pix', parcelas: 1,
+        slug, metodo, parcelas: metodo === 'cartao' ? parcelas : 1,
         nome: form.nome.trim(), email: form.email.trim().toLowerCase(), tel: form.tel, cpf: form.cpf.replace(/\D/g, '') || undefined,
         cupom: cupom?.codigo || undefined, turnstileToken: token,
       });
+      if (r.metodo === 'cartao') {
+        if (!invoiceUrlSegura(r.invoiceUrl)) throw new Error('Não conseguimos abrir a página de pagamento. Tente novamente.');
+        window.location.assign(r.invoiceUrl);
+        return; // mantém "enviando" até sair da página
+      }
       const pedido = { orderId: r.orderId, payload: r.pix.payload, recebedor: r.pix.recebedor, totalCents: r.totalCents, email: form.email.trim().toLowerCase(), membro };
       savePendingPix(slug, pedido);
       onPix(pedido);
     } catch (err) {
+      // Plano B do cartão: se o n8n/Asaas falhar (fora do ar, 5xx), abre o link de pagamento do produto.
+      // Erro de validação (4xx com campos) continua no formulário.
+      if (metodo === 'cartao' && linkAsaas && (!err.status || err.status >= 500)) {
+        window.location.assign(linkAsaas);
+        return;
+      }
       const campos = err.campos || [];
       if (campos.length) setErros(Object.fromEntries(campos.map((c) => [c, CAMPO_MSG[c] || 'Confira este campo'])));
       if (campos.includes('cupom')) setCupom(null);
@@ -204,13 +212,13 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
         <p className="text-xs uppercase tracking-wide text-foreground/70 dark:text-foreground-dark/70 mb-1">Você está comprando</p>
         <h1 className="text-2xl font-serif font-bold leading-tight">{produto.nome}</h1>
         <div className="mt-3 flex items-baseline gap-2 flex-wrap">
-          {cupom && metodo === 'pix' && <span className="text-foreground/65 dark:text-foreground-dark/65 line-through">{formatBRL(produto.precoCents)}</span>}
+          {cupom && <span className="text-foreground/65 dark:text-foreground-dark/65 line-through">{formatBRL(produto.precoCents)}</span>}
           <span className="text-2xl font-semibold text-foreground dark:text-foreground-dark" data-testid="total">{formatBRL(total)}</span>
-          {metodo === 'cartao' && (
-            <span className="text-sm text-foreground/70 dark:text-foreground-dark/70">parcelamento na página do Asaas</span>
+          {metodo === 'cartao' && parcelas > 1 && (
+            <span className="text-sm text-foreground/70 dark:text-foreground-dark/70">em {parcelas}x de {formatBRL(linhaCartao.parcelaCents)}</span>
           )}
         </div>
-        {cupom && metodo === 'pix' && (
+        {cupom && (
           <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-primary dark:text-primary-dark">
             <Tag className="h-4 w-4" /> Cupom <strong>{cupom.codigo}</strong>: −{formatBRL(cupom.valorCents)}
             <button type="button" onClick={removerCupom} className="ml-1 opacity-60 hover:opacity-100" aria-label="Remover cupom"><X className="h-4 w-4" /></button>
@@ -221,25 +229,33 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
       {/* Pagamento */}
       <section className="space-y-3">
         <h2 className="text-lg font-serif font-bold">Pagamento</h2>
-        <div className={`grid gap-3 ${temPix && cartaoUrl ? 'grid-cols-2' : 'grid-cols-1'}`} role="radiogroup">
-          {temPix && (
+        <div className={`grid gap-3 ${produto.metodos.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`} role="radiogroup">
+          {produto.metodos.includes('pix') && (
             <MetodoBtn ativo={metodo === 'pix'} onClick={() => setMetodo('pix')} icon={QrCode} titulo="PIX" sub={`À vista · ${formatBRL(liquido)}`} />
           )}
-          {cartaoUrl && (
-            <MetodoBtn ativo={metodo === 'cartao'} onClick={() => setMetodo('cartao')} icon={CreditCard} titulo="Cartão de crédito" sub="Parcelado no Asaas" />
+          {produto.metodos.includes('cartao') && (
+            <MetodoBtn ativo={metodo === 'cartao'} onClick={() => setMetodo('cartao')} icon={CreditCard} titulo="Cartão de crédito"
+              sub={simulacao.length > 1 ? `Em até ${simulacao.length}x` : 'À vista'} />
           )}
         </div>
-        <p className="text-xs text-foreground/70 dark:text-foreground-dark/70">
-          {metodo === 'pix'
-            ? 'Geramos o QR Code na próxima tela. O acesso é liberado assim que conferirmos o pagamento.'
-            : 'Você vai para a página segura do Asaas, onde escolhe as parcelas e digita os dados do cartão. Use lá o mesmo e-mail da sua conta no Núcleo para o acesso ser liberado nela.'}
-        </p>
-        {metodo === 'cartao' && cupom && (
-          <p className="text-xs text-foreground/70 dark:text-foreground-dark/70">O cupom vale só no PIX.</p>
+        {!metodo && (
+          <p className="text-sm text-foreground/70 dark:text-foreground-dark/70">Escolha como quer pagar para continuar.</p>
         )}
+        {metodo === 'cartao' && simulacao.length > 0 && (
+          <Campo id="ck-parcelas" label="Parcelas">
+            <select id="ck-parcelas" className={inputCls()} value={parcelas} onChange={(e) => setParcelas(Number(e.target.value))}>
+              {simulacao.map((s) => <option key={s.parcelas} value={s.parcelas}>{parcelaLabel(s)}</option>)}
+            </select>
+          </Campo>
+        )}
+        <p className="text-xs text-foreground/70 dark:text-foreground-dark/70">
+          {metodo === 'pix' && 'Geramos o QR Code na próxima tela. O acesso é liberado assim que conferirmos o pagamento.'}
+          {metodo === 'cartao' && 'Na próxima tela, a página segura do Asaas já abre com seus dados: é só digitar o cartão. Parcelado com acréscimo da operadora.'}
+        </p>
       </section>
 
-      {metodo === 'pix' && (<>
+
+      {metodo && (<>
       {/* Dados */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
@@ -316,14 +332,14 @@ function Formulario({ slug, produto, cupomInicial, onPix }) {
       </section>
 
       <Turnstile key={tsKey} onToken={(t) => { setToken(t); if (t) setTsFalhou(false); }} onError={() => setTsFalhou(true)} />
-      </>)}
 
       {erroGeral && <Aviso tipo="erro">{erroGeral}</Aviso>}
 
       <Button type="submit" variant="cta" size="xl" className="w-full hover:scale-100" disabled={enviando}>
         {enviando ? <><Loader2 className="h-5 w-5 animate-spin" /> Processando…</>
-          : metodo === 'pix' ? `Gerar PIX de ${formatBRL(total)}` : `Pagar ${formatBRL(total)} no cartão (Asaas)`}
+          : metodo === 'pix' ? `Gerar PIX de ${formatBRL(total)}` : `Pagar ${formatBRL(total)} no cartão`}
       </Button>
+      </>)}
     </form>
   );
 }

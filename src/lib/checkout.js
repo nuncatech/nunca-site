@@ -9,9 +9,9 @@ export const API_BASE = (ENV.VITE_CHECKOUT_API || 'https://n8n.gruponunca.com.br
 export const TURNSTILE_SITE_KEY = ENV.VITE_TURNSTILE_SITE_KEY || '0x4AAAAAAFyzC2NrD3Yy-gwQ';
 export const TURNSTILE_TEST_KEY = '1x00000000000000000000AA';
 
-// Cartão: link de pagamento do Asaas de cada produto (= config_id da aba `produtos`).
-// O cartão não passa pelo n8n: o botão abre direto o link, e o payment-workflow-assas libera pelo paymentLink.
-// O Asaas não permite embutir (X-Frame-Options), por isso é redirecionamento.
+// Plano B do cartão: link de pagamento do Asaas de cada produto (= config_id da aba `produtos`).
+// O caminho normal cria a cobrança via n8n (fatura já com nome/e-mail/CPF); se o n8n falhar, o site abre este link.
+// A liberação funciona nos dois: o payment-workflow-assas resolve o produto pelo externalReference ou pelo paymentLink.
 export const ASAAS_LINKS = {
   'nutricao-precisao': 'vg0jgsbt0t7uw76a',
   'master-class-endurance-capelato': 'dpj4hip035hevge2',
