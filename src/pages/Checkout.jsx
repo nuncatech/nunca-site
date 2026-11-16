@@ -5,6 +5,7 @@ import QRCode from 'qrcode';
 import { Check, Copy, CreditCard, Loader2, Lock, QrCode, Tag, X, AlertCircle, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Turnstile from '@/components/checkout/Turnstile';
+import useNoIndex from '@/hooks/useNoIndex';
 import { LINKS } from '@/lib/constants';
 import {
   api, formatBRL, parcelaLabel, maskTelefone, maskCpf, validarForm, emailValido, invoiceUrlSegura, CAMPO_MSG,
@@ -26,18 +27,6 @@ function Campo({ id, label, erro, children, dica }) {
   );
 }
 Campo.propTypes = { id: PropTypes.string, label: PropTypes.string, erro: PropTypes.string, children: PropTypes.node, dica: PropTypes.node };
-
-function useNoIndex(title) {
-  useEffect(() => {
-    const prev = document.title;
-    document.title = title;
-    const m = document.createElement('meta');
-    m.name = 'robots';
-    m.content = 'noindex, nofollow';
-    document.head.appendChild(m);
-    return () => { document.title = prev; m.remove(); };
-  }, [title]);
-}
 
 export default function Checkout() {
   const { slug } = useParams();

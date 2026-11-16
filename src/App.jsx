@@ -11,6 +11,7 @@ import Contato from './pages/Contato';
 import Links from './pages/Links';
 import AppRedirect from './pages/AppRedirect';
 import Checkout from './pages/Checkout';
+import Pagamentos from './pages/Pagamentos';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path="/links" element={<Links />} />
               <Route path="/app" element={<AppRedirect />} />
               <Route path="/checkout/:slug" element={<Checkout />} />
+              <Route path="/pagamentos" element={<Pagamentos />} />
             </Routes>
           </main>
           <Footer />
