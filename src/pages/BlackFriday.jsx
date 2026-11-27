@@ -5,7 +5,7 @@ import { Check, Loader2, ShoppingCart, Tag, X, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import useNoIndex from '@/hooks/useNoIndex';
 import { Aviso, Formulario, PixPagamento } from '@/components/checkout/CheckoutParts';
-import { LABS_BF } from '@/data/blackFriday';
+import { LABS_BF, BF_NO_AR } from '@/data/blackFriday';
 import {
   api, formatBRL, loadCarrinho, saveCarrinho, toggleItem, totalCarrinho, clearPendingPix, loadPendingPix,
 } from '@/lib/checkout';
@@ -158,7 +158,8 @@ export default function BlackFriday() {
             <Loader2 className="h-6 w-6 animate-spin mr-2" /> Carregando os labs…
           </div>
         )}
-        {encerrada && <Aviso tipo="info" titulo="A Black Friday acabou">Obrigado por participar. Fique de olho nos próximos labs.</Aviso>}
+        {encerrada && !BF_NO_AR && <Aviso tipo="info" titulo="Em breve">Os labs da Black Friday ainda não estão disponíveis. Volte em instantes.</Aviso>}
+        {encerrada && BF_NO_AR && <Aviso tipo="info" titulo="A Black Friday acabou">Obrigado por participar. Fique de olho nos próximos labs.</Aviso>}
         {pendentes && (
           <div className="mb-4"><Aviso tipo="info">Cupom {cupom} não está ativo. Os labs aparecem pelo preço cheio.</Aviso></div>
         )}

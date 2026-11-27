@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Tag } from 'lucide-react';
+import { BF_NO_AR } from '@/data/blackFriday';
 
 // Faixa da Black Friday no topo do site. Some sozinha depois de 30/11/2026 23:59 (horário de Brasília)
 // e não aparece nas páginas de compra (/black-friday e /checkout), para não competir com o carrinho.
@@ -8,7 +9,7 @@ const ESCONDER_EM = ['/black-friday'];
 
 export default function BannerBlackFriday() {
   const { pathname } = useLocation();
-  if (Date.now() > FIM.getTime()) return null;
+  if (!BF_NO_AR || Date.now() > FIM.getTime()) return null;
   if (ESCONDER_EM.includes(pathname) || pathname.startsWith('/checkout/')) return null;
   return (
     <div className="fixed top-0 inset-x-0 z-[60] bg-cta text-cta-foreground text-sm">
