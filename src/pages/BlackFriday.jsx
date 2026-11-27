@@ -5,7 +5,7 @@ import { Check, Loader2, ShoppingCart, Tag, X, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import useNoIndex from '@/hooks/useNoIndex';
 import { Aviso, Formulario, PixPagamento } from '@/components/checkout/CheckoutParts';
-import { LABS_BF, BF_NO_AR } from '@/data/blackFriday';
+import { LABS_BF, BF_NO_AR, PRECO_CUPOM_CENTS } from '@/data/blackFriday';
 import {
   api, formatBRL, loadCarrinho, saveCarrinho, toggleItem, totalCarrinho, clearPendingPix, loadPendingPix,
 } from '@/lib/checkout';
@@ -29,7 +29,7 @@ function Card({ item, selecionado, onToggle }) {
         <p className="mt-2 text-xs text-foreground/70 dark:text-foreground-dark/70">{item.descricao}</p>
         <p className="mt-3 text-sm">
           <span className="line-through text-foreground/60 dark:text-foreground-dark/60">{formatBRL(item.precoCents)}</span>{' '}
-          <span className="font-semibold text-primary dark:text-primary-dark">R$ 15,00</span>
+          <span className="font-semibold text-primary dark:text-primary-dark">{formatBRL(PRECO_CUPOM_CENTS)}</span>
         </p>
       </div>
       <div className="p-4 pt-0">
@@ -43,7 +43,7 @@ function Card({ item, selecionado, onToggle }) {
 }
 Card.propTypes = { item: PropTypes.object.isRequired, selecionado: PropTypes.bool, onToggle: PropTypes.func };
 
-function Resumo({ itens, selecionados, cupomOk, cupomErr, total, onRemover, onFinalizar, onAdicionarTodos, disabled }) {
+function Resumo({ itens, selecionados, cupomOk, cupomErr, total, totalCheio, onRemover, onFinalizar, onAdicionarTodos, disabled }) {
   const sel = itens.filter((i) => selecionados.includes(i.slug));
   return (
     <div className="space-y-3">
@@ -70,7 +70,12 @@ function Resumo({ itens, selecionados, cupomOk, cupomErr, total, onRemover, onFi
       </div>
       <div className="flex items-baseline justify-between">
         <span className="text-sm text-foreground/70 dark:text-foreground-dark/70">Total</span>
-        <span className="text-2xl font-semibold" data-testid="total-carrinho">{formatBRL(total)}</span>
+        <span className="flex items-baseline gap-2">
+          {totalCheio > total && (
+            <span className="text-sm line-through text-foreground/60 dark:text-foreground-dark/60" data-testid="total-carrinho-cheio">{formatBRL(totalCheio)}</span>
+          )}
+          <span className="text-2xl font-semibold" data-testid="total-carrinho">{formatBRL(total)}</span>
+        </span>
       </div>
       <Button type="button" variant="cta" size="lg" className="w-full" disabled={disabled || sel.length === 0} onClick={onFinalizar}>
         Finalizar compra
@@ -82,7 +87,8 @@ function Resumo({ itens, selecionados, cupomOk, cupomErr, total, onRemover, onFi
 }
 Resumo.propTypes = {
   itens: PropTypes.array, selecionados: PropTypes.array, cupomOk: PropTypes.bool, cupomErr: PropTypes.string,
-  total: PropTypes.number, onRemover: PropTypes.func, onFinalizar: PropTypes.func, onAdicionarTodos: PropTypes.func, disabled: PropTypes.bool,
+  total: PropTypes.number, totalCheio: PropTypes.number, onRemover: PropTypes.func, onFinalizar: PropTypes.func,
+  onAdicionarTodos: PropTypes.func, disabled: PropTypes.bool,
 };
 
 export default function BlackFriday() {
@@ -112,16 +118,19 @@ export default function BlackFriday() {
     setSelecionados((s) => s.filter((x) => validos.has(x)));
   }, [itens]);
 
-  const total = useMemo(() => (itens ? totalCarrinho(itens, selecionados).precoCents : 0), [itens, selecionados]);
+  const cupomOk = cupom === CUPOM_PADRAO;
+  const total = useMemo(() => (itens
+    ? totalCarrinho(itens, selecionados, { precoItemCents: cupomOk ? PRECO_CUPOM_CENTS : null })
+    : { quantidade: 0, precoCents: 0, precoFinalCents: 0 }), [itens, selecionados, cupomOk]);
   const encerrada = itens && itens.length === 0;
 
   const produto = useMemo(() => ({
     slug: 'carrinho',
     nome: `Carrinho · ${selecionados.length} ${selecionados.length === 1 ? 'lab' : 'labs'}`,
-    precoCents: total,
+    precoCents: total.precoCents,
     metodos: ['pix', 'cartao'],
     parcelas: [],
-  }), [selecionados.length, total]);
+  }), [selecionados.length, total.precoCents]);
 
   if (pix) {
     return (
@@ -134,7 +143,6 @@ export default function BlackFriday() {
     );
   }
 
-  const cupomOk = cupom === CUPOM_PADRAO;
   const pendentes = selecionados.length > 0 && !cupomOk;
 
   return (
@@ -176,7 +184,7 @@ export default function BlackFriday() {
 
             <aside className="hidden lg:block sticky top-28 rounded-lg border border-foreground/10 dark:border-foreground-dark/15 p-5 bg-muted dark:bg-muted-dark">
               {!finalizando ? (
-                <Resumo itens={itens} selecionados={selecionados} cupomOk={cupomOk} total={total}
+                <Resumo itens={itens} selecionados={selecionados} cupomOk={cupomOk} total={total.precoFinalCents} totalCheio={total.precoCents}
                   onRemover={(s) => setSelecionados((x) => x.filter((y) => y !== s))}
                   onFinalizar={() => setFinalizando(true)}
                   onAdicionarTodos={() => setSelecionados(itens.map((i) => i.slug))} />
@@ -193,7 +201,12 @@ export default function BlackFriday() {
         <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-foreground/10 dark:border-foreground-dark/15 bg-background/95 dark:bg-background-dark/95 backdrop-blur px-4 py-3 flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="text-xs text-foreground/70 dark:text-foreground-dark/70">{selecionados.length} {selecionados.length === 1 ? 'lab' : 'labs'}</p>
-            <p className="font-semibold" data-testid="total-carrinho-mobile">{formatBRL(total)}</p>
+            <p className="font-semibold" data-testid="total-carrinho-mobile">
+              {total.precoCents > total.precoFinalCents && (
+                <span className="mr-2 text-xs font-normal line-through text-foreground/60 dark:text-foreground-dark/60">{formatBRL(total.precoCents)}</span>
+              )}
+              {formatBRL(total.precoFinalCents)}
+            </p>
           </div>
           <Button type="button" variant="cta" disabled={selecionados.length === 0} onClick={() => setFinalizando(true)}>Finalizar</Button>
         </div>
