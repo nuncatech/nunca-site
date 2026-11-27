@@ -65,3 +65,12 @@ test('api: monta URL, envia JSON e traduz erros', async () => {
     (e) => e.message === 'Confira os dados informados' && e.campos[0] === 'cpf' && e.status === 400);
   await assert.rejects(C.api.status('x', { fetchImpl: async () => { throw new TypeError('net'); } }), (e) => e.status === 0);
 });
+
+test('carrinho: toggle, limite de 20 e leitura defensiva', () => {
+  const s = C.toggleItem(['lab-a-x'], 'lab-b-x');
+  assert.deepEqual(s, ['lab-a-x', 'lab-b-x']);
+  assert.deepEqual(C.toggleItem(s, 'lab-a-x'), ['lab-b-x']);
+  const cheio = Array.from({ length: 20 }, (_, i) => `lab-${i}-x`);
+  assert.equal(C.toggleItem(cheio, 'lab-novo-x').length, 20);
+  assert.deepEqual(C.totalCarrinho([{ slug: 'a', precoCents: 1500 }, { slug: 'b', precoCents: 1500 }], ['a', 'b']), { quantidade: 2, precoCents: 3000 });
+});

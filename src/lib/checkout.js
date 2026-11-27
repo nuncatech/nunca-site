@@ -194,9 +194,37 @@ async function call(path, { method = 'GET', body, query, fetchImpl = globalThis.
 
 export const api = {
   produto: (slug, o) => call('checkout/product', { query: { slug }, ...o }),
+  colecao: (c, o) => call('checkout/collection', { query: { c }, ...o }),
   cotar: (body, o) => call('checkout/quote', { method: 'POST', body, ...o }),
   pedido: (body, o) => call('checkout/order', { method: 'POST', body, ...o }),
   status: (id, o) => call('checkout/order-status', { query: { id }, ...o }),
   jaPaguei: (id, o) => call('checkout/order-paid', { method: 'POST', body: { id }, ...o }),
   membro: (email, o) => call('checkout/member-check', { method: 'POST', body: { email }, ...o }),
 };
+
+// ------------------------------------------------------------------ carrinho (Black Friday)
+// Carrinho guardado por coleção no localStorage. Só slugs e um id de versão: o preço vem sempre do servidor.
+export const CARRINHO_PREFIX = 'nunca_cart_';
+const CART_MAX = 20;
+
+export function loadCarrinho(colecao) {
+  try {
+    const v = JSON.parse(store()?.getItem(CARRINHO_PREFIX + colecao) || '[]');
+    return Array.isArray(v) ? v.filter((s) => typeof s === 'string' && /^[a-z0-9-]{3,80}$/.test(s)).slice(0, CART_MAX) : [];
+  } catch { return []; }
+}
+
+export function saveCarrinho(colecao, slugs) {
+  try { store()?.setItem(CARRINHO_PREFIX + colecao, JSON.stringify(slugs.slice(0, CART_MAX))); } catch { /* ignora */ }
+}
+
+export function toggleItem(slugs, slug) {
+  if (slugs.includes(slug)) return slugs.filter((s) => s !== slug);
+  return slugs.length >= CART_MAX ? slugs : [...slugs, slug];
+}
+
+// Quantos dias de acesso valem: o carrinho usa o maior prazo entre os itens (vem do servidor).
+export function totalCarrinho(itens, slugs) {
+  const sel = itens.filter((i) => slugs.includes(i.slug));
+  return { quantidade: sel.length, precoCents: sel.reduce((a, i) => a + i.precoCents, 0) };
+}

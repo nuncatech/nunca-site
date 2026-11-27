@@ -110,6 +110,11 @@ export default function Pagamentos() {
           Para aplicar cupom no link, adicione <code className="px-1 rounded bg-foreground/5">?cupom=CODIGO</code>.
         </p>
         <Secao titulo="Produtos" slugs={PRODUTOS} />
+        <section className="mt-10">
+          <h2 className="text-lg font-serif font-bold text-foreground dark:text-foreground-dark">Carrinho da Black Friday</h2>
+          <p className="mt-1 text-sm text-foreground/60 dark:text-foreground-dark/60">Vários labs num pagamento só. Link para compartilhar:</p>
+          <p className="mt-3"><Link to="/black-friday" className="text-accent dark:text-accent-dark underline">/black-friday</Link></p>
+        </section>
         <Secao titulo="Testes" dica="Não divulgar. PIX de R$ 1 e cartão de R$ 5, para testar o fluxo ponta a ponta." slugs={TESTES} />
       </div>
     </div>
