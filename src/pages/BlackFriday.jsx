@@ -5,6 +5,7 @@ import { Check, Loader2, ShoppingCart, Tag, X, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import useNoIndex from '@/hooks/useNoIndex';
 import { Aviso, Formulario, PixPagamento } from '@/components/checkout/CheckoutParts';
+import { LABS_BF } from '@/data/blackFriday';
 import {
   api, formatBRL, loadCarrinho, saveCarrinho, toggleItem, totalCarrinho, clearPendingPix, loadPendingPix,
 } from '@/lib/checkout';
@@ -18,10 +19,14 @@ function Card({ item, selecionado, onToggle }) {
   return (
     <li className={`rounded-lg border overflow-hidden flex flex-col transition-colors ${selecionado
       ? 'border-primary dark:border-primary-dark ring-2 ring-primary/30 dark:ring-primary-dark/30' : 'border-foreground/10 dark:border-foreground-dark/15'}`}>
+      {item.capa && (
+        <img src={item.capa} alt="" loading="lazy" className="w-full aspect-[16/9] object-cover bg-muted dark:bg-muted-dark" />
+      )}
       <div className="p-4 flex-1">
-        <p className="text-xs uppercase tracking-wide text-foreground/70 dark:text-foreground-dark/70">{item.tipo}</p>
-        <h3 className="mt-1 font-serif font-bold leading-snug text-foreground dark:text-foreground-dark">{item.nome}</h3>
-        <p className="mt-2 text-sm text-foreground/75 dark:text-foreground-dark/75">{item.descricao}</p>
+        <p className="text-xs uppercase tracking-wide text-foreground/70 dark:text-foreground-dark/70">{item.nome}</p>
+        <h3 className="mt-1 font-serif font-bold leading-snug text-foreground dark:text-foreground-dark">{item.tema || item.nome}</h3>
+        {item.palestrante && <p className="mt-1 text-sm text-foreground/80 dark:text-foreground-dark/80">com {item.palestrante}</p>}
+        <p className="mt-2 text-xs text-foreground/70 dark:text-foreground-dark/70">{item.descricao}</p>
         <p className="mt-3 text-sm">
           <span className="line-through text-foreground/60 dark:text-foreground-dark/60">{formatBRL(item.precoCents)}</span>{' '}
           <span className="font-semibold text-primary dark:text-primary-dark">R$ 15,00</span>
@@ -162,7 +167,7 @@ export default function BlackFriday() {
           <div className="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
             <ul className="grid sm:grid-cols-2 gap-4">
               {itens.map((it) => (
-                <Card key={it.slug} item={{ ...it, tipo: it.slug.includes('online') ? 'LAB Online' : 'LAB Presencial', descricao: it.slug.includes('online') ? 'Materiais + gravação por 30 dias' : 'Materiais por 30 dias' }}
+                <Card key={it.slug} item={{ ...it, ...(LABS_BF[it.slug] || {}), descricao: it.slug.includes('online') ? 'Materiais + gravação por 30 dias' : 'Materiais por 30 dias' }}
                   selecionado={selecionados.includes(it.slug)}
                   onToggle={(s) => setSelecionados((x) => toggleItem(x, s))} />
               ))}
