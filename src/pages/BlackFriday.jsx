@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Check, Loader2, ShoppingCart, Tag, X, AlertCircle } from 'lucide-react';
+import { Check, ShoppingCart, Tag, X, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import useNoIndex from '@/hooks/useNoIndex';
 import { Aviso, Formulario, PixPagamento } from '@/components/checkout/CheckoutParts';
@@ -20,7 +20,7 @@ function Card({ item, selecionado, onToggle }) {
     <li className={`rounded-lg border overflow-hidden flex flex-col transition-colors ${selecionado
       ? 'border-primary dark:border-primary-dark ring-2 ring-primary/30 dark:ring-primary-dark/30' : 'border-foreground/10 dark:border-foreground-dark/15'}`}>
       {item.capa && (
-        <img src={item.capa} alt="" loading="lazy" className="w-full aspect-[16/9] object-cover bg-muted dark:bg-muted-dark" />
+        <img src={item.capa} alt="" loading="lazy" className="w-full aspect-[3/1] object-cover bg-muted dark:bg-muted-dark" />
       )}
       <div className="p-4 flex-1">
         <p className="text-xs uppercase tracking-wide text-foreground/70 dark:text-foreground-dark/70">{item.nome}</p>
@@ -45,6 +45,7 @@ Card.propTypes = { item: PropTypes.object.isRequired, selecionado: PropTypes.boo
 
 function Resumo({ itens, selecionados, cupomOk, cupomErr, total, totalCheio, onRemover, onFinalizar, onAdicionarTodos, disabled }) {
   const sel = itens.filter((i) => selecionados.includes(i.slug));
+  const cupomAplicado = cupomOk && sel.length > 0;
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
@@ -66,7 +67,9 @@ function Resumo({ itens, selecionados, cupomOk, cupomErr, total, totalCheio, onR
       )}
       <div className="flex items-center justify-between border-t border-foreground/10 dark:border-foreground-dark/15 pt-3 text-sm">
         <span className="text-foreground/70 dark:text-foreground-dark/70 inline-flex items-center gap-1"><Tag className="h-4 w-4" /> Cupom {CUPOM_PADRAO}</span>
-        <span className={cupomOk ? 'text-primary dark:text-primary-dark font-medium' : 'text-foreground/60'}>{cupomOk ? 'aplicado' : cupomErr || '—'}</span>
+        <span className={cupomAplicado ? 'text-primary dark:text-primary-dark font-medium' : 'text-foreground/60'}>
+          {cupomAplicado ? 'aplicado' : cupomOk ? 'ao escolher um lab' : cupomErr || '—'}
+        </span>
       </div>
       <div className="flex items-baseline justify-between">
         <span className="text-sm text-foreground/70 dark:text-foreground-dark/70">Total</span>
@@ -170,8 +173,20 @@ export default function BlackFriday() {
 
         {erro && <Aviso tipo="erro">{erro}</Aviso>}
         {!itens && !erro && (
-          <div className="flex items-center justify-center py-24 text-foreground/70 dark:text-foreground-dark/70" aria-live="polite">
-            <Loader2 className="h-6 w-6 animate-spin mr-2" /> Carregando os labs…
+          <div aria-busy="true">
+            <span className="sr-only" role="status">Carregando os labs…</span>
+            <ul className="grid sm:grid-cols-2 gap-4 animate-pulse">
+              {[0, 1, 2, 3].map((n) => (
+                <li key={n} className="rounded-lg border border-foreground/10 dark:border-foreground-dark/15 overflow-hidden">
+                  <div className="w-full aspect-[3/1] bg-muted dark:bg-muted-dark" />
+                  <div className="p-4 space-y-3">
+                    <div className="h-3 w-1/3 rounded bg-muted dark:bg-muted-dark" />
+                    <div className="h-5 w-3/4 rounded bg-muted dark:bg-muted-dark" />
+                    <div className="h-4 w-1/2 rounded bg-muted dark:bg-muted-dark" />
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         {encerrada && !BF_NO_AR && <Aviso tipo="info" titulo="Em breve">Os labs da Black Friday ainda não estão disponíveis. Volte em instantes.</Aviso>}
