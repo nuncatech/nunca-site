@@ -15,15 +15,15 @@ const CDN = 'https://cdn.cativalab.digital/gruponunca/files/';
 // Kits completão (materiais profissionais) — criados na Cativa em 27/11/2026.
 export const KITS_BF = {
   'kit-completo-ayurveda': { tema: 'Nutrição Ayurveda', capa: CDN + '5bd920e0-8b07-4252-b472-3c830d69494d.jpg' },
-  'kit-completo-celiaca': { tema: 'Doença Celíaca', capa: CDN + '9f1fdca2-ed72-40b4-8165-2fa0ffaa96f2.jpg' },
-  'kit-completo-performance': { tema: 'Performance', capa: CDN + '046719ef-4f97-4e88-a773-650a3aa17106.jpg' },
-  'kit-completo-personal-chef': { tema: 'Personal Chef', capa: CDN + '21684980-a096-462d-835d-9ae7e2da380b.jpg' },
-  'kit-completo-intestino-nutrigenetica': { tema: 'Intestino e Nutrigenética', capa: CDN + '578bff76-2b81-445e-9037-a972d117ae5f.jpg' },
-  'kit-completo-fertilidade': { tema: 'Fertilidade', capa: CDN + '7c6461b6-acd3-451b-be34-8fadcf9195cd.jpg' },
-  'kit-completo-lipedema': { tema: 'Lipedema', capa: CDN + '2fffb3fb-1eb8-44ca-afc9-c1fe602961c3.jpg' },
-  'kit-completo-bariatrica': { tema: 'Bariátrica', capa: CDN + 'd3f2d8e2-cf32-46d3-9f80-0ba639d627a8.jpg' },
-  'kit-completo-cardiopatias': { tema: 'Cardiopatias', capa: CDN + 'b44a47c7-593d-44ca-b00c-673496a00108.jpg' },
-  'kit-completo-tea-tdah': { tema: 'TEA e TDAH na Infância', capa: CDN + '97fd96e9-a24b-4c60-b03d-127a5e59f18d.jpg' },
+  'kit-completo-celiaca': { tema: 'Doença Celíaca', capa: CDN + '70d4946f-2a4c-413d-9dc5-ae51006f97b1.jpg' },
+  'kit-completo-performance': { tema: 'Performance', capa: CDN + '773860e9-be3b-4e42-af4f-e9b7592cd283.jpg' },
+  'kit-completo-personal-chef': { tema: 'Personal Chef', capa: CDN + '7ba61f95-3347-4f96-9bcd-c233f57cef91.jpg' },
+  'kit-completo-intestino-nutrigenetica': { tema: 'Intestino e Nutrigenética', capa: CDN + 'bf93585b-eb09-4f16-b77c-296fde34e51f.jpg' },
+  'kit-completo-fertilidade': { tema: 'Fertilidade', capa: CDN + 'b8fb6ab9-f851-4657-a49b-77eea459276f.jpg' },
+  'kit-completo-lipedema': { tema: 'Lipedema', capa: CDN + '14b094f2-b00c-4d9b-b173-b2143d08f0e8.jpg' },
+  'kit-completo-bariatrica': { tema: 'Bariátrica', capa: CDN + '950c4bf7-858e-4431-a76b-6c21fa274c37.jpg' },
+  'kit-completo-cardiopatias': { tema: 'Cardiopatias', capa: CDN + '868989f0-af1f-4443-a31f-7158a485a003.jpg' },
+  'kit-completo-tea-tdah': { tema: 'TEA e TDAH na Infância', capa: CDN + '5db1628b-a3f5-4ef5-90aa-47e3f0bbface.jpg' },
 };
 
 export const LABS_BF = {
