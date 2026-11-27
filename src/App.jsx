@@ -12,12 +12,15 @@ import Links from './pages/Links';
 import AppRedirect from './pages/AppRedirect';
 import Checkout from './pages/Checkout';
 import Pagamentos from './pages/Pagamentos';
+import BlackFriday from './pages/BlackFriday';
+import BannerBlackFriday from './components/BannerBlackFriday';
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
         <div className="min-h-screen flex flex-col bg-background dark:bg-background-dark transition-colors duration-300">
+          <BannerBlackFriday />
           <Header />
           <main className="flex-grow">
             <Routes>
@@ -31,6 +34,7 @@ function App() {
               <Route path="/app" element={<AppRedirect />} />
               <Route path="/checkout/:slug" element={<Checkout />} />
               <Route path="/pagamentos" element={<Pagamentos />} />
+              <Route path="/black-friday" element={<BlackFriday />} />
             </Routes>
           </main>
           <Footer />
