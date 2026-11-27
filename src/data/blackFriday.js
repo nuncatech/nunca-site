@@ -2,7 +2,7 @@
 // O preço e a disponibilidade vêm do n8n (coleção black-friday-2026); aqui é só apresentação.
 // Lançamento: a faixa do topo e a página só anunciam quando os labs estiverem liberados no Núcleo
 // (selos atribuídos e cursos em Restrito) e os produtos ativos na planilha.
-export const BF_NO_AR = false;
+export const BF_NO_AR = true;
 
 const CDN = 'https://cdn.cativalab.digital/gruponunca/files/';
 
