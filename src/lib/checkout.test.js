@@ -93,3 +93,13 @@ test('total do carrinho com cupom de preço por item (BLACKFRIDAY a R$ 15)', () 
   assert.deepEqual(C.totalCarrinho([{ slug: 'x', precoCents: 10000 }], ['x'], { precoItemCents: 100 }),
     { quantidade: 1, precoCents: 10000, precoFinalCents: 500 });
 });
+
+test('total do carrinho com preço por item: labs R$ 15 e kits R$ 35', () => {
+  const itens = [
+    { slug: 'lab-presencial-marco', precoCents: 10000 },
+    { slug: 'kit-completo-lipedema', precoCents: 7000 },
+  ];
+  const preco = (slug) => (slug.startsWith('kit-') ? 3500 : 1500);
+  assert.deepEqual(C.totalCarrinho(itens, itens.map((i) => i.slug), { precoItemCents: preco }),
+    { quantidade: 2, precoCents: 17000, precoFinalCents: 5000 });
+});

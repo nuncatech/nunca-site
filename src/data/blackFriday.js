@@ -6,8 +6,25 @@ export const BF_NO_AR = true;
 
 // Preço de cada lab com o cupom BLACKFRIDAY (aba `cupons`: tipo preco_item, valor 15).
 export const PRECO_CUPOM_CENTS = 1500;
+// Kits completão: preço próprio no cupom (aba `cupons`, coluna `precos`: 35 por kit).
+export const PRECO_CUPOM_KIT_CENTS = 3500;
+export const precoCupomDe = (slug) => (KITS_BF[slug] ? PRECO_CUPOM_KIT_CENTS : PRECO_CUPOM_CENTS);
 
 const CDN = 'https://cdn.cativalab.digital/gruponunca/files/';
+
+// Kits completão (materiais profissionais) — criados na Cativa em 27/11/2026.
+export const KITS_BF = {
+  'kit-completo-ayurveda': { tema: 'Nutrição Ayurveda', capa: CDN + '5bd920e0-8b07-4252-b472-3c830d69494d.jpg' },
+  'kit-completo-celiaca': { tema: 'Doença Celíaca', capa: CDN + '9f1fdca2-ed72-40b4-8165-2fa0ffaa96f2.jpg' },
+  'kit-completo-performance': { tema: 'Performance', capa: CDN + '046719ef-4f97-4e88-a773-650a3aa17106.jpg' },
+  'kit-completo-personal-chef': { tema: 'Personal Chef', capa: CDN + '21684980-a096-462d-835d-9ae7e2da380b.jpg' },
+  'kit-completo-intestino-nutrigenetica': { tema: 'Intestino e Nutrigenética', capa: CDN + '578bff76-2b81-445e-9037-a972d117ae5f.jpg' },
+  'kit-completo-fertilidade': { tema: 'Fertilidade', capa: CDN + '7c6461b6-acd3-451b-be34-8fadcf9195cd.jpg' },
+  'kit-completo-lipedema': { tema: 'Lipedema', capa: CDN + '2fffb3fb-1eb8-44ca-afc9-c1fe602961c3.jpg' },
+  'kit-completo-bariatrica': { tema: 'Bariátrica', capa: CDN + 'd3f2d8e2-cf32-46d3-9f80-0ba639d627a8.jpg' },
+  'kit-completo-cardiopatias': { tema: 'Cardiopatias', capa: CDN + 'b44a47c7-593d-44ca-b00c-673496a00108.jpg' },
+  'kit-completo-tea-tdah': { tema: 'TEA e TDAH na Infância', capa: CDN + '97fd96e9-a24b-4c60-b03d-127a5e59f18d.jpg' },
+};
 
 export const LABS_BF = {
   'lab-presencial-fevereiro': { tema: 'Nutrição Bariátrica', palestrante: 'Ana Paula Mendonça', capa: CDN + 'f95bb38d-6049-4a22-9353-09094d5ffbf9.png' },

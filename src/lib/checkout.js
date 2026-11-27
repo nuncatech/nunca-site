@@ -231,8 +231,11 @@ export function toggleItem(slugs, slug) {
 export function totalCarrinho(itens, slugs, { precoItemCents = null } = {}) {
   const sel = itens.filter((i) => slugs.includes(i.slug));
   const precoCents = sel.reduce((a, i) => a + i.precoCents, 0);
+  // precoItemCents aceita um valor (campanha de preço único) ou uma função (preço por item:
+  // labs a R$ 15, kits a R$ 35), espelhando a coluna `precos` do cupom no servidor.
+  const alvo = (slug) => (typeof precoItemCents === 'function' ? precoItemCents(slug) : precoItemCents);
   const precoFinalCents = precoItemCents == null
     ? precoCents
-    : sel.reduce((a, i) => a + Math.max(PRECO_MINIMO_CENTS, Math.min(i.precoCents, precoItemCents)), 0);
+    : sel.reduce((a, i) => a + Math.max(PRECO_MINIMO_CENTS, Math.min(i.precoCents, alvo(i.slug))), 0);
   return { quantidade: sel.length, precoCents, precoFinalCents };
 }

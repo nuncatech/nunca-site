@@ -5,7 +5,7 @@ import { Check, Loader2, ShoppingCart, Tag, X, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import useNoIndex from '@/hooks/useNoIndex';
 import { Aviso, Formulario, PixPagamento } from '@/components/checkout/CheckoutParts';
-import { LABS_BF, BF_NO_AR, PRECO_CUPOM_CENTS } from '@/data/blackFriday';
+import { LABS_BF, KITS_BF, BF_NO_AR, precoCupomDe } from '@/data/blackFriday';
 import {
   api, formatBRL, loadCarrinho, saveCarrinho, toggleItem, totalCarrinho, clearPendingPix, loadPendingPix,
 } from '@/lib/checkout';
@@ -29,7 +29,7 @@ function Card({ item, selecionado, onToggle }) {
         <p className="mt-2 text-xs text-foreground/70 dark:text-foreground-dark/70">{item.descricao}</p>
         <p className="mt-3 text-sm">
           <span className="line-through text-foreground/60 dark:text-foreground-dark/60">{formatBRL(item.precoCents)}</span>{' '}
-          <span className="font-semibold text-primary dark:text-primary-dark">{formatBRL(PRECO_CUPOM_CENTS)}</span>
+          <span className="font-semibold text-primary dark:text-primary-dark">{formatBRL(precoCupomDe(item.slug))}</span>
         </p>
       </div>
       <div className="p-4 pt-0">
@@ -49,10 +49,10 @@ function Resumo({ itens, selecionados, cupomOk, cupomErr, total, totalCheio, onR
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <h2 className="font-serif font-bold text-lg">Seu carrinho</h2>
-        <span className="text-sm text-foreground/70 dark:text-foreground-dark/70">{sel.length} {sel.length === 1 ? 'lab' : 'labs'}</span>
+        <span className="text-sm text-foreground/70 dark:text-foreground-dark/70">{sel.length} {sel.length === 1 ? 'item' : 'itens'}</span>
       </div>
       {sel.length === 0 ? (
-        <p className="text-sm text-foreground/70 dark:text-foreground-dark/70">Adicione os labs que quiser. Você paga todos de uma vez.</p>
+        <p className="text-sm text-foreground/70 dark:text-foreground-dark/70">Adicione os labs e kits que quiser. Você paga tudo de uma vez.</p>
       ) : (
         <ul className="space-y-1.5 text-sm max-h-48 overflow-auto">
           {sel.map((i) => (
@@ -128,13 +128,15 @@ export default function BlackFriday() {
 
   const cupomOk = cupom === CUPOM_PADRAO;
   const total = useMemo(() => (itens
-    ? totalCarrinho(itens, selecionados, { precoItemCents: cupomOk ? PRECO_CUPOM_CENTS : null })
+    ? totalCarrinho(itens, selecionados, { precoItemCents: cupomOk ? precoCupomDe : null })
     : { quantidade: 0, precoCents: 0, precoFinalCents: 0 }), [itens, selecionados, cupomOk]);
   const encerrada = itens && itens.length === 0;
+  const labs = useMemo(() => (itens || []).filter((i) => LABS_BF[i.slug]), [itens]);
+  const kits = useMemo(() => (itens || []).filter((i) => KITS_BF[i.slug]), [itens]);
 
   const produto = useMemo(() => ({
     slug: 'carrinho',
-    nome: `Carrinho · ${selecionados.length} ${selecionados.length === 1 ? 'lab' : 'labs'}`,
+    nome: `Carrinho · ${selecionados.length} ${selecionados.length === 1 ? 'item' : 'itens'}`,
     precoCents: total.precoCents,
     metodos: ['pix', 'cartao'],
     parcelas: [],
@@ -159,11 +161,11 @@ export default function BlackFriday() {
         <header className="mb-8 max-w-2xl">
           <p className="text-xs uppercase tracking-wide text-accent dark:text-accent-dark">Black Friday NUNCA</p>
           <h1 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark">
-            Labs por R$ 15 cada
+            Labs por R$ 15 · Kits por R$ 35
           </h1>
           <p className="mt-3 text-foreground/80 dark:text-foreground-dark/80">
-            Monte seu carrinho com os labs que quiser e pague tudo de uma vez, por PIX ou cartão. Cada lab dá acesso aos materiais
-            por 30 dias a partir da compra; o online inclui a gravação.
+            Monte seu carrinho com o que quiser e pague tudo de uma vez, por PIX ou cartão. Cada lab dá acesso aos materiais
+            por 30 dias a partir da compra; o online inclui a gravação. Os kits completão são materiais profissionais para consultar no dia a dia.
           </p>
           <p className="mt-2 text-sm text-foreground/70 dark:text-foreground-dark/70">Promoção válida até 30/11/2026.</p>
         </header>
@@ -177,18 +179,38 @@ export default function BlackFriday() {
         {encerrada && !BF_NO_AR && <Aviso tipo="info" titulo="Em breve">Os labs da Black Friday ainda não estão disponíveis. Volte em instantes.</Aviso>}
         {encerrada && BF_NO_AR && <Aviso tipo="info" titulo="A Black Friday acabou">Obrigado por participar. Fique de olho nos próximos labs.</Aviso>}
         {pendentes && (
-          <div className="mb-4"><Aviso tipo="info">Cupom {cupom} não está ativo. Os labs aparecem pelo preço cheio.</Aviso></div>
+          <div className="mb-4"><Aviso tipo="info">Cupom {cupom} não está ativo. Os itens aparecem pelo preço cheio.</Aviso></div>
         )}
 
         {itens && itens.length > 0 && !finalizando && (
           <div className="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
-            <ul className="grid sm:grid-cols-2 gap-4">
-              {itens.map((it) => (
-                <Card key={it.slug} item={{ ...it, ...(LABS_BF[it.slug] || {}), descricao: it.slug.includes('online') ? 'Materiais + gravação por 30 dias' : 'Materiais por 30 dias' }}
-                  selecionado={selecionados.includes(it.slug)}
-                  onToggle={(s) => setSelecionados((x) => toggleItem(x, s))} />
-              ))}
-            </ul>
+            <div className="space-y-10">
+              {labs.length > 0 && (
+                <section>
+                  <h2 className="mb-4 font-serif text-2xl font-bold text-foreground dark:text-foreground-dark">Labs · R$ 15 cada</h2>
+                  <ul className="grid sm:grid-cols-2 gap-4">
+                    {labs.map((it) => (
+                      <Card key={it.slug} item={{ ...it, ...(LABS_BF[it.slug] || {}), descricao: it.slug.includes('online') ? 'Materiais + gravação por 30 dias' : 'Materiais por 30 dias' }}
+                        selecionado={selecionados.includes(it.slug)}
+                        onToggle={(s) => setSelecionados((x) => toggleItem(x, s))} />
+                    ))}
+                  </ul>
+                </section>
+              )}
+              {kits.length > 0 && (
+                <section>
+                  <h2 className="mb-1 font-serif text-2xl font-bold text-foreground dark:text-foreground-dark">Kits completão · R$ 35 cada</h2>
+                  <p className="mb-4 text-sm text-foreground/70 dark:text-foreground-dark/70">Materiais profissionais de cada tema: apostila, guia de consulta, mapas mentais e lâminas de atendimento.</p>
+                  <ul className="grid sm:grid-cols-2 gap-4">
+                    {kits.map((it) => (
+                      <Card key={it.slug} item={{ ...it, ...(KITS_BF[it.slug] || {}), descricao: 'Materiais profissionais · acesso permanente' }}
+                        selecionado={selecionados.includes(it.slug)}
+                        onToggle={(s) => setSelecionados((x) => toggleItem(x, s))} />
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
 
             <aside className="hidden lg:block sticky top-28 rounded-lg border border-foreground/10 dark:border-foreground-dark/15 p-5 bg-muted dark:bg-muted-dark">
               <Resumo itens={itens} selecionados={selecionados} cupomOk={cupomOk} total={total.precoFinalCents} totalCheio={total.precoCents}
@@ -217,7 +239,7 @@ export default function BlackFriday() {
       {itens && itens.length > 0 && !finalizando && (
         <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-foreground/10 dark:border-foreground-dark/15 bg-background/95 dark:bg-background-dark/95 backdrop-blur px-4 py-3 flex items-center gap-3">
           <div className="min-w-0 flex-1">
-            <p className="text-xs text-foreground/70 dark:text-foreground-dark/70">{selecionados.length} {selecionados.length === 1 ? 'lab' : 'labs'}</p>
+            <p className="text-xs text-foreground/70 dark:text-foreground-dark/70">{selecionados.length} {selecionados.length === 1 ? 'item' : 'itens'}</p>
             <p className="font-semibold" data-testid="total-carrinho-mobile">
               {total.precoCents > total.precoFinalCents && (
                 <span className="mr-2 text-xs font-normal line-through text-foreground/60 dark:text-foreground-dark/60">{formatBRL(total.precoCents)}</span>
