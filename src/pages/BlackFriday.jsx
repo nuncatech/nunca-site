@@ -164,11 +164,11 @@ export default function BlackFriday() {
         <header className="mb-8 max-w-2xl">
           <p className="text-xs uppercase tracking-wide text-accent dark:text-accent-dark">Black Friday NUNCA</p>
           <h1 className="mt-2 text-3xl sm:text-4xl font-serif font-bold text-primary dark:text-primary-dark">
-            Labs por R$ 15 · Kits por R$ 35
+            Labs online por R$ 15 · Kits por R$ 35
           </h1>
           <p className="mt-3 text-foreground/80 dark:text-foreground-dark/80">
-            Monte seu carrinho com o que quiser e pague tudo de uma vez, por PIX ou cartão. Cada lab dá acesso aos materiais
-            por 30 dias a partir da compra; o online inclui a gravação. Os kits completão são materiais profissionais para consultar no dia a dia.
+            Monte seu carrinho com o que quiser e pague tudo de uma vez, por PIX ou cartão. Cada lab online (reprise) dá acesso
+            à gravação e aos materiais por 30 dias a partir da compra. Os kits completão são materiais profissionais para consultar no dia a dia.
           </p>
           <p className="mt-2 text-sm text-foreground/70 dark:text-foreground-dark/70">Promoção válida até 30/11/2026.</p>
         </header>
@@ -202,10 +202,10 @@ export default function BlackFriday() {
             <div className="space-y-10">
               {labs.length > 0 && (
                 <section>
-                  <h2 className="mb-4 font-serif text-2xl font-bold text-foreground dark:text-foreground-dark">Labs · R$ 15 cada</h2>
+                  <h2 className="mb-4 font-serif text-2xl font-bold text-foreground dark:text-foreground-dark">Labs online · R$ 15 cada</h2>
                   <ul className="grid sm:grid-cols-2 gap-4">
                     {labs.map((it) => (
-                      <Card key={it.slug} item={{ ...it, ...(LABS_BF[it.slug] || {}), descricao: it.slug.includes('online') ? 'Materiais + gravação por 30 dias' : 'Materiais por 30 dias' }}
+                      <Card key={it.slug} item={{ ...it, ...(LABS_BF[it.slug] || {}), descricao: 'Gravação + materiais por 30 dias' }}
                         selecionado={selecionados.includes(it.slug)}
                         onToggle={(s) => setSelecionados((x) => toggleItem(x, s))} />
                     ))}
