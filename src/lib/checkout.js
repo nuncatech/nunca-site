@@ -206,6 +206,8 @@ export const api = {
 // Carrinho guardado por coleção no localStorage. Só slugs e um id de versão: o preço vem sempre do servidor.
 export const CARRINHO_PREFIX = 'nunca_cart_';
 const CART_MAX = 20;
+// Piso do servidor para o preço de um item depois do cupom (lib/pricing.js do n8n).
+const PRECO_MINIMO_CENTS = 500;
 
 export function loadCarrinho(colecao) {
   try {
@@ -224,7 +226,13 @@ export function toggleItem(slugs, slug) {
 }
 
 // Quantos dias de acesso valem: o carrinho usa o maior prazo entre os itens (vem do servidor).
-export function totalCarrinho(itens, slugs) {
+// `precoItemCents` = preço de cada item com o cupom (ex.: BLACKFRIDAY a R$ 15). Espelha o servidor:
+// o item passa a custar esse valor, mas nunca abaixo de R$ 5 nem acima do preço cheio do item.
+export function totalCarrinho(itens, slugs, { precoItemCents = null } = {}) {
   const sel = itens.filter((i) => slugs.includes(i.slug));
-  return { quantidade: sel.length, precoCents: sel.reduce((a, i) => a + i.precoCents, 0) };
+  const precoCents = sel.reduce((a, i) => a + i.precoCents, 0);
+  const precoFinalCents = precoItemCents == null
+    ? precoCents
+    : sel.reduce((a, i) => a + Math.max(PRECO_MINIMO_CENTS, Math.min(i.precoCents, precoItemCents)), 0);
+  return { quantidade: sel.length, precoCents, precoFinalCents };
 }

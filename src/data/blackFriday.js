@@ -4,6 +4,9 @@
 // (selos atribuídos e cursos em Restrito) e os produtos ativos na planilha.
 export const BF_NO_AR = true;
 
+// Preço de cada lab com o cupom BLACKFRIDAY (aba `cupons`: tipo preco_item, valor 15).
+export const PRECO_CUPOM_CENTS = 1500;
+
 const CDN = 'https://cdn.cativalab.digital/gruponunca/files/';
 
 export const LABS_BF = {
