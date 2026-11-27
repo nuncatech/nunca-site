@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
+import useBannerBlackFriday from '@/hooks/useBannerBlackFriday';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const faixaBF = useBannerBlackFriday();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +30,7 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 100 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${faixaBF ? 'top-9' : 'top-0'} ${isScrolled
         ? 'bg-background/95 dark:bg-background-dark/95 backdrop-blur-sm shadow-md'
         : 'bg-transparent'
         }`}
