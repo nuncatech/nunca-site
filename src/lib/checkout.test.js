@@ -72,5 +72,24 @@ test('carrinho: toggle, limite de 20 e leitura defensiva', () => {
   assert.deepEqual(C.toggleItem(s, 'lab-a-x'), ['lab-b-x']);
   const cheio = Array.from({ length: 20 }, (_, i) => `lab-${i}-x`);
   assert.equal(C.toggleItem(cheio, 'lab-novo-x').length, 20);
-  assert.deepEqual(C.totalCarrinho([{ slug: 'a', precoCents: 1500 }, { slug: 'b', precoCents: 1500 }], ['a', 'b']), { quantidade: 2, precoCents: 3000 });
+  assert.deepEqual(C.totalCarrinho([{ slug: 'a', precoCents: 1500 }, { slug: 'b', precoCents: 1500 }], ['a', 'b']),
+    { quantidade: 2, precoCents: 3000, precoFinalCents: 3000 });
+});
+
+test('total do carrinho com cupom de preço por item (BLACKFRIDAY a R$ 15)', () => {
+  const itens = [
+    { slug: 'pres', precoCents: 10000 },
+    { slug: 'onl', precoCents: 3000 },
+    { slug: 'barato', precoCents: 1200 },
+  ];
+  // sem cupom: soma cheia
+  assert.deepEqual(C.totalCarrinho(itens, ['pres', 'onl']), { quantidade: 2, precoCents: 13000, precoFinalCents: 13000 });
+  // com cupom: cada item vira R$ 15, mantendo o cheio para o riscado
+  assert.deepEqual(C.totalCarrinho(itens, ['pres', 'onl'], { precoItemCents: 1500 }),
+    { quantidade: 2, precoCents: 13000, precoFinalCents: 3000 });
+  // item mais barato que o cupom não fica mais caro, e o piso de R$ 5 vale
+  assert.deepEqual(C.totalCarrinho(itens, ['barato'], { precoItemCents: 1500 }),
+    { quantidade: 1, precoCents: 1200, precoFinalCents: 1200 });
+  assert.deepEqual(C.totalCarrinho([{ slug: 'x', precoCents: 10000 }], ['x'], { precoItemCents: 100 }),
+    { quantidade: 1, precoCents: 10000, precoFinalCents: 500 });
 });
