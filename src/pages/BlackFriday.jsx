@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Check, Loader2, ShoppingCart, Tag, X, AlertCircle } from 'lucide-react';
@@ -99,7 +99,15 @@ export default function BlackFriday() {
   const [selecionados, setSelecionados] = useState(() => loadCarrinho(COLECAO));
   const [finalizando, setFinalizando] = useState(false);
   const [pix, setPix] = useState(() => loadPendingPix(SLUG_CARRINHO));
+  const finalizarRef = useRef(null);
   const cupom = (searchParams.get('cupom') || CUPOM_PADRAO).toUpperCase();
+
+  // Ao abrir a finalização, leva o formulário para o topo da tela (no desktop ele
+  // substitui a grade de labs; a pessoa pode estar rolada lá embaixo).
+  useEffect(() => {
+    if (!finalizando || typeof window === 'undefined' || window.innerWidth < 1024) return;
+    finalizarRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [finalizando]);
 
   useEffect(() => {
     let vivo = true;
@@ -172,7 +180,7 @@ export default function BlackFriday() {
           <div className="mb-4"><Aviso tipo="info">Cupom {cupom} não está ativo. Os labs aparecem pelo preço cheio.</Aviso></div>
         )}
 
-        {itens && itens.length > 0 && (
+        {itens && itens.length > 0 && !finalizando && (
           <div className="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
             <ul className="grid sm:grid-cols-2 gap-4">
               {itens.map((it) => (
@@ -183,15 +191,24 @@ export default function BlackFriday() {
             </ul>
 
             <aside className="hidden lg:block sticky top-28 rounded-lg border border-foreground/10 dark:border-foreground-dark/15 p-5 bg-muted dark:bg-muted-dark">
-              {!finalizando ? (
-                <Resumo itens={itens} selecionados={selecionados} cupomOk={cupomOk} total={total.precoFinalCents} totalCheio={total.precoCents}
-                  onRemover={(s) => setSelecionados((x) => x.filter((y) => y !== s))}
-                  onFinalizar={() => setFinalizando(true)}
-                  onAdicionarTodos={() => setSelecionados(itens.map((i) => i.slug))} />
-              ) : (
-                <FinalizarBox produto={produto} slugs={selecionados} onPix={setPix} />
-              )}
+              <Resumo itens={itens} selecionados={selecionados} cupomOk={cupomOk} total={total.precoFinalCents} totalCheio={total.precoCents}
+                onRemover={(s) => setSelecionados((x) => x.filter((y) => y !== s))}
+                onFinalizar={() => setFinalizando(true)}
+                onAdicionarTodos={() => setSelecionados(itens.map((i) => i.slug))} />
             </aside>
+          </div>
+        )}
+
+        {/* Finalização no desktop: coluna única, para o formulário rolar com a página
+            (no painel lateral o "sticky" prendia o rodapé fora da tela). */}
+        {itens && itens.length > 0 && finalizando && (
+          <div ref={finalizarRef} className="hidden lg:block max-w-xl scroll-mt-28">
+            <button type="button" onClick={() => setFinalizando(false)} className="mb-4 text-sm text-accent dark:text-accent-dark hover:underline">
+              ← Voltar ao carrinho
+            </button>
+            <div className="rounded-lg border border-foreground/10 dark:border-foreground-dark/15 p-5 bg-muted dark:bg-muted-dark">
+              <FinalizarBox produto={produto} slugs={selecionados} onPix={setPix} />
+            </div>
           </div>
         )}
       </div>
